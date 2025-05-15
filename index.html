@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Qualiport Cards</title>
+  <link rel="icon" href="https://qualiport.com.br/imagens-qualiport/144.png" type="image/png" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<div id="toast">Copiado!</div>
+
+<body>
+  
+
+  <!-- Conteúdo principal -->
+  <div class="main-content-wrapper" id="main-content-wrapper">
+    <div class="header">
+      <img id="logo" src="https://www.qualiport.com.br/imagens-qualiport/qualiport-branco.png" alt="Logo Qualiport" />
+
+      <div id="search-block">
+        <input type="text" class="search-bar" id="search-bar" placeholder="Nome do condomínio" />
+        <button id="eraser" class="eraser">X</button>
+      </div>
+    </div>
+
+    <!-- Área de exibição dos cards -->
+    <div class="main-content">
+      <div class="card-container" id="card-container"></div>
+    </div>
+  </div>
+
+  <!-- Modal (futura implementação) -->
+  <dialog class="modal">
+    <div class="modal-box">
+      <p class="modal-content"></p>
+    </div>
+  </dialog>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAATlVnPBF8nV_9D-Oj1g2S1d6M9A3NMZ4",
+      authDomain: "qualiport-cards.firebaseapp.com",
+      projectId: "qualiport-cards",
+      storageBucket: "qualiport-cards.appspot.com",
+      messagingSenderId: "717239443892",
+      appId: "1:717239443892:web:1d295d92e0e1f1a03912e1"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().signInWithEmailAndPassword("jefwillyam@gmail.com", "QualiportSuporteTi")
+      .then(response => console.log('Login sucesso:', response))
+      .catch(error => console.log('Erro no login:', error));
+  </script>
+
+  <!-- Script principal -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>

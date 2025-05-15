@@ -1,0 +1,354 @@
+/* Botão de alternância entre IP/Domínio */
+.toggleButton {
+	margin: 5px;
+	padding: 8px 16px;
+	background-color: #0077cc;
+	color: white;
+	border: none;
+	border-radius: 0.5rem;
+	font-size: 14px;
+	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(0, 119, 204, 0.2),
+		0 5px 15px rgba(0, 119, 204, 0.2);
+}
+
+.toggleButton:hover {
+	background-color: #005fa3;
+}
+
+/* Botão de teste */
+.testButton {
+	margin: 5px;
+	padding: 8px 16px;
+	background-color: #ffaa00;
+	color: white;
+	border: none;
+	border-radius: 0.5rem;
+	font-size: 14px;
+	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(255, 170, 0, 0.2),
+		0 5px 15px rgba(255, 170, 0, 0.2);
+}
+
+.testButton:hover {
+	background-color: #cc8800;
+}
+
+/* Melhoria para layout de botões no card */
+.card {
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Responsividade básica */
+@media screen and (max-width: 768px) {
+	.card {
+		width: 80vw;
+	}
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+	display: flex;
+	flex-direction: column;
+	font-family: "Roboto", sans-serif;
+	align-items: center;
+
+}
+
+h1 {
+	text-align: center;
+}
+
+.main-content-wrapper{
+	margin-left: 50px;
+}
+
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-direction: row;
+	margin: 50px 100px;
+}
+
+.card {
+	height: auto;
+	width: 20vw;
+	display: block;
+	text-align: center;
+	font-weight: 600;
+	background: -webkit-radial-gradient(#ffffff, #e9e9e9e2);
+	border-radius: 1.5rem;
+	margin: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+	background-color: #3e8e41;
+}
+
+.button {
+	width: auto;
+	margin: 10px;
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #4caf50;
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 0.7rem;
+	box-shadow: 0 4px 6px rgba(25, 244, 9, 0.1),
+		0 5px 15px rgba(76, 155, 93, 0.807);
+}
+
+.button:hover {
+	background-color: #3e8e41;
+}
+
+.button:active {
+	transform: translateY(3px);
+}
+
+.button {
+	width: auto;
+	margin: 10px;
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #4caf50;
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 0.7rem;
+	box-shadow: 0 4px 6px rgba(25, 244, 9, 0.1),
+		0 5px 15px rgba(76, 155, 93, 0.807);
+}
+
+.button:hover {
+	background-color: #3e8e41;
+}
+
+.button:active {
+	transform: translateY(3px);
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.search-bar {
+	background-color: #b2d1b3;
+	color: #10490e;
+	font-family: "Roboto", sans-serif;
+	font-weight: 600;
+	font-size: large;
+	width: 25em;
+	padding: 15px;
+	border-radius: 50px;
+	border: none;
+	outline: none;
+}
+
+.eraser {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	background-color: #ffcccc;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 24px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.eraser:hover {
+	background-color: #ff9999;
+	cursor: pointer;
+}
+
+#search-block {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#header-block {
+	display: flex;
+	align-items: center;
+}
+
+#logo {
+	filter: invert(100%);
+	width: 250px;
+	display: flex;
+	align-self: center;
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+.login-container{
+	display: hidden;
+}
+
+.login-form{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal {
+	border-radius: 20px;
+	border-style: none;
+	box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
+	width: 400px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	background: -webkit-radial-gradient(#ffffff, #e9e9e9e2);
+	border-radius: 1.5rem;
+	margin: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#closeButton {
+	margin-left: auto;
+	height: 50px;
+	width: 50px;
+	background-color: #f82929;
+	box-shadow: 0 4px 6px rgba(25, 244, 9, 0.1),
+		0 3px 5px rgba(201, 108, 108, 0.807);
+}
+
+#detalheHeader {
+	display: flex;
+	flex-direction: row;
+	margin-left: 30%;
+}
+
+
+.sidebar {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #183f1a;
+	overflow-x: hidden;
+	padding-top: 50px;
+	transition: 0.5s;
+}
+
+.sidebar a{
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #ffffff;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidebar a:hover{
+	color: black;
+}
+
+.sidebar .closebtn{
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+#openbtn{
+    display: block;
+    position: absolute;
+    left: 10px;
+}
+
+/* Toggle estilo deslizante */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.sliderToggle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #c77dd9; /* Lilás (IP) */
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.sliderToggle:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .sliderToggle {
+  background-color: #4caf50; /* Verde (Domínio) */
+}
+
+.switch input:checked + .sliderToggle:before {
+  transform: translateX(26px);
+}
+
+#toast {
+	visibility: hidden;
+	min-width: 200px;
+	margin-left: -100px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 0.5rem;
+	padding: 16px;
+	position: fixed;
+	z-index: 1000;
+	left: 50%;
+	bottom: 30px;
+	font-size: 16px;
+	opacity: 0;
+	transition: opacity 0.5s, bottom 0.5s;
+  }
+  
+  #toast.show {
+	visibility: visible;
+	opacity: 1;
+	bottom: 50px;
+  }
+  
