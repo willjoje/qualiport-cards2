@@ -2530,7 +2530,7 @@
                 "Porta": "20396"
             },
             {
-                "Nome": "FACIAL SAL\\xc2O DE FESTAS",
+                "Nome": "FACIAL SALÃO DE FESTAS",
                 "IP": "192.168.8.76",
                 "Porta": "20397"
             }
@@ -5438,7 +5438,7 @@
                 "Porta": "7890"
             },
             {
-                "Nome": "ATA N\\xc3O TEM. AUTONOMO",
+                "Nome": "ATA NÃO TEM. AUTONOMO",
                 "IP": "192.168.12.164",
                 "Porta": "8889"
             },
@@ -8748,7 +8748,7 @@
                 "Porta": "21812"
             },
             {
-                "Nome": "FACIAL - BICICLET\\xc1RIO",
+                "Nome": "FACIAL - BICICLETÁRIO",
                 "IP": "192.168.29.104",
                 "Porta": "21813"
             },
@@ -9006,7 +9006,7 @@
                 "Porta": "21884"
             },
             {
-                "Nome": "FACIAL SAL\\xc3O DE FESTA",
+                "Nome": "FACIAL SALÃO DE FESTA",
                 "IP": "192.168.30.41",
                 "Porta": "21885"
             }
@@ -9591,7 +9591,7 @@
                 "Porta": "22034"
             },
             {
-                "Nome": "FACIAL SAL\\xc3O DE FESTAS",
+                "Nome": "FACIAL SALÃO DE FESTAS",
                 "IP": "192.168.32.219",
                 "Porta": "22035"
             },
@@ -11396,7 +11396,7 @@
                 "Porta": "22305"
             },
             {
-                "Nome": "FACIAL SA\\xcdDA",
+                "Nome": "FACIAL SAÍDA",
                 "IP": "192.168.36.10",
                 "Porta": "22306"
             },
@@ -11902,12 +11902,12 @@
                 "Porta": "22383"
             },
             {
-                "Nome": "FACIAL BLOCO A - S\\xc3O PEDRO",
+                "Nome": "FACIAL BLOCO A - SÃO PEDRO",
                 "IP": "192.168.37.73",
                 "Porta": "22385"
             },
             {
-                "Nome": "FACIAL BLOCO B - S\\xc3O MARCOS",
+                "Nome": "FACIAL BLOCO B - SÃO MARCOS",
                 "IP": "192.168.37.74",
                 "Porta": "22386"
             }
@@ -12828,7 +12828,7 @@
     {
         "id": "229",
         "dominio": "cond-azaleias.dyndns.org",
-        "nome": "pra\\xe7a das azaleias",
+        "nome": "praça das azaleias",
         "nat": [
             {
                 "Nome": "Mikrotik",
