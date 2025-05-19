@@ -5,6 +5,11 @@
         "nome": "Quazar",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.21.33",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA / PANASONIC",
                 "IP": "192.168.21.36",
                 "Porta": "8889"
@@ -67,6 +72,11 @@
         "nome": "Saint Honore",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.21.65",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.21.69",
                 "Porta": "8887"
@@ -106,8 +116,13 @@
     {
         "id": "003",
         "dominio": "cond-henrique.dyndns.org",
-        "nome": "Henrique",
+        "nome": "Henrique IV",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.21.97",
+                "Porta": "7890"
+            },
             {
                 "Nome": "DVR",
                 "IP": "192.168.21.102",
@@ -155,6 +170,11 @@
         "dominio": "cond-raffaello-recife.dyndns.org",
         "nome": "Raffaello",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.21.193",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.21.218",
@@ -217,6 +237,11 @@
         "dominio": "cond-mangara.dyndns.org",
         "nome": "Mangara",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.21.225",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -290,6 +315,11 @@
         "nome": "Helena",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.22.1",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA UTECH",
                 "IP": "192.168.22.4",
                 "Porta": "8889"
@@ -352,6 +382,11 @@
         "nome": "september",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.22.65",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.22.88",
                 "Porta": "8889"
@@ -383,6 +418,11 @@
         "dominio": "cond-saonicolau.dyndns.org",
         "nome": "sao nicolau",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.22.129",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.22.132",
@@ -466,6 +506,11 @@
         "nome": "camilo pereira",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.28.97",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.28.100",
                 "Porta": "8889"
@@ -533,6 +578,11 @@
         "nome": "leonardo",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.22.161",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "Mascared",
                 "IP": "",
                 "Porta": ""
@@ -584,6 +634,11 @@
         "dominio": "cond-serradomar.dyndns.org",
         "nome": "serra do mar",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.24.65",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -642,6 +697,11 @@
         "nome": "engenho poeta",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.24.193",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA UTECH-FXO",
                 "IP": "192.168.24.196",
                 "Porta": "8887"
@@ -683,6 +743,11 @@
         "dominio": "cond-monica.dyndns.org",
         "nome": "monica",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.28.161",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARA",
                 "IP": "",
@@ -761,6 +826,11 @@
         "nome": "dom rodrigo",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.28.129",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "GUARITA",
                 "IP": "192.168.28.135",
                 "Porta": "8093"
@@ -813,6 +883,11 @@
         "nome": "zezo",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.30.65",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA UTECH",
                 "IP": "192.168.30.68",
                 "Porta": "8887"
@@ -849,6 +924,11 @@
         "dominio": "cond-mariadagloria.dyndns.org",
         "nome": "mariadagloria",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.3.97",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.3.100",
@@ -897,6 +977,11 @@
         "nome": "ibiruba",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.4.33",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.4.36",
                 "Porta": "8889"
@@ -938,6 +1023,11 @@
         "dominio": "cond-vivenda.dyndns.org",
         "nome": "vivenda das orquideas",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.4.65",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.4.68",
@@ -996,6 +1086,11 @@
         "nome": "green park",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.4.161",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.4.164",
                 "Porta": "8889"
@@ -1027,6 +1122,11 @@
         "dominio": "cond-ecadequeiroz.dyndns.org",
         "nome": "eca de queiroz",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.4.97",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.4.100",
@@ -1079,6 +1179,11 @@
         "dominio": "cond-bosquedelyon.dyndns.org",
         "nome": "bosque de lyon",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.5.1",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -1136,6 +1241,11 @@
         "dominio": "cond-andarai.dyndns.org",
         "nome": "andarai",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.4.225",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -1199,6 +1309,11 @@
         "nome": "kintela",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.3.161",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.3.164",
                 "Porta": "8889"
@@ -1230,6 +1345,11 @@
         "dominio": "cond-portalbv.dyndns.org",
         "nome": "portal bv",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.3.193",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.3.196",
@@ -1272,6 +1392,11 @@
         "dominio": "cond-claricecavalcanti.dyndns.org",
         "nome": "claricecavalcanti",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.4.193",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -1320,6 +1445,11 @@
         "nome": "village",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.5.129",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.5.132",
                 "Porta": "8889"
@@ -1362,6 +1492,11 @@
         "nome": "residencial abc",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.5.193",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.5.196",
                 "Porta": "8887"
@@ -1393,6 +1528,11 @@
         "dominio": "cond-lioz.dyndns.org",
         "nome": "lioz",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.5.161",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.5.164",
@@ -1450,6 +1590,11 @@
         "dominio": "cond-viamanzoni.dyndns.org",
         "nome": "via manzoni",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.6.1",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.6.4",
@@ -1517,6 +1662,11 @@
         "dominio": "cond-costadalmacia.dyndns.org",
         "nome": "costa dalmacia",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.6.33",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.6.36",
@@ -1590,6 +1740,11 @@
         "nome": "bellagio",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.6.129",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.6.132",
                 "Porta": "8889"
@@ -1626,6 +1781,11 @@
         "dominio": "cond-marquesdoparana.dyndns.org",
         "nome": "marques do parana ",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.6.97",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.6.100",
@@ -1676,8 +1836,13 @@
     {
         "id": "033",
         "dominio": "cond-andregide.dyndns.org",
-        "nome": "andr\\xe9 gide",
+        "nome": "André Gide",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.6.193",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.6.196",
@@ -1723,8 +1888,13 @@
     {
         "id": "034",
         "dominio": "cond-andressadealmeida.dyndns.org",
-        "nome": "andressa de almeida",
+        "nome": "Andressa de Almeida",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.6.225",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.6.228",
@@ -1775,8 +1945,13 @@
     {
         "id": "035",
         "dominio": "cond-emanuella.dyndns.org",
-        "nome": "emanuella",
+        "nome": "Emanuella",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.7.1",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.7.26",
@@ -1822,8 +1997,13 @@
     {
         "id": "036",
         "dominio": "cond-monarca.dyndns.org",
-        "nome": "monarca",
+        "nome": "Monarca",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.5.225",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.5.253",
@@ -1854,8 +2034,13 @@
     {
         "id": "037",
         "dominio": "cond-tatiana.dyndns.org",
-        "nome": "tatiana",
+        "nome": "Tatiana",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.12.97",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.12.100",
@@ -1916,8 +2101,13 @@
     {
         "id": "038",
         "dominio": "cond-venezuela.dyndns.org",
-        "nome": "venezuela",
+        "nome": "Venezuela",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.13.225",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.13.228",
@@ -1973,8 +2163,13 @@
     {
         "id": "039",
         "dominio": "cond-dalia.dyndns.org",
-        "nome": "dalia",
+        "nome": "Dalia",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.7.65",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.7.68",
@@ -2012,6 +2207,11 @@
         "dominio": "cond-goldengarden.dyndns.org",
         "nome": "golden garden",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.7.97",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.7.121",
@@ -2057,8 +2257,13 @@
     {
         "id": "041",
         "dominio": "cond-atlantico.dyndns.org",
-        "nome": "atlantico",
+        "nome": "Atlântico",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.7.193",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.7.219",
@@ -2114,8 +2319,13 @@
     {
         "id": "042",
         "dominio": "cond-davinci.dyndns.org",
-        "nome": "da vince",
+        "nome": "Da Vinci",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.7.33",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.7.36",
@@ -2146,8 +2356,13 @@
     {
         "id": "043",
         "dominio": "cond-longbeach.dyndns.org",
-        "nome": "longbeachviii",
+        "nome": "Long Beach VIII",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.7.129",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -2193,8 +2408,13 @@
     {
         "id": "044",
         "dominio": "cond-sparta1.dyndns.org",
-        "nome": "sparta",
+        "nome": "Sparta",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.7.225",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.7.228",
@@ -2225,8 +2445,13 @@
     {
         "id": "045",
         "dominio": "cond-sinfonia.dyndns.org",
-        "nome": "sinfonia",
+        "nome": "Sinfonia",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.8.33",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.8.36",
@@ -2267,8 +2492,13 @@
     {
         "id": "046",
         "dominio": "cond-costadorio.dyndns.org",
-        "nome": "costa do rio",
+        "nome": "Costa do Rio",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.8.65",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.8.68",
@@ -2344,8 +2574,13 @@
     {
         "id": "047",
         "dominio": "cond-miranteclassic.dyndns.org",
-        "nome": "mirante classic",
+        "nome": "Mirante Classic",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.9.65",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA UTECH",
                 "IP": "192.168.9.68",
@@ -2406,8 +2641,13 @@
     {
         "id": "048",
         "dominio": "cond-goldensea.dyndns.org",
-        "nome": "golden sea",
+        "nome": "Golden Sea",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.8.225",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA LINKSYS",
                 "IP": "192.168.8.249",
@@ -2438,8 +2678,13 @@
     {
         "id": "049",
         "dominio": "cond-quintadaspalmeiras.dyndns.org",
-        "nome": "quintapalmeiras",
+        "nome": "Quinta das Palmeiras",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.9.97",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUERADE WANS",
                 "IP": "",
@@ -2485,8 +2730,13 @@
     {
         "id": "050",
         "dominio": "cond-alamedadosdantas.dyndns.org",
-        "nome": "alamenda dos dantas",
+        "nome": "Alameda dos Dantas",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.9.129",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.9.132",
@@ -2552,8 +2802,13 @@
     {
         "id": "051",
         "dominio": "cond-duasnacoes.dyndns.org",
-        "nome": "duas na\\xe7\\xf5es",
+        "nome": "Duas Nações",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.7.161",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.7.185",
@@ -2584,8 +2839,13 @@
     {
         "id": "052",
         "dominio": "cond-moradacolonial.dyndns.org",
-        "nome": "morada colonial ",
+        "nome": "Morada Colonial",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.5.33",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.5.36",
@@ -2646,8 +2906,13 @@
     {
         "id": "053",
         "dominio": "cond-gilbertofreyre.dyndns.org",
-        "nome": "gilberto freyre",
+        "nome": "Gilberto Freyre",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.10.193",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.10.196",
@@ -2716,6 +2981,11 @@
         "nome": "turqueza",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.9.161",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "MASQUERADE WANS",
                 "IP": "",
                 "Porta": ""
@@ -2767,6 +3037,11 @@
         "dominio": "cond-berna.dyndns.org",
         "nome": "berna",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.10.1",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -2832,8 +3107,13 @@
     {
         "id": "056",
         "dominio": "cond-anacristina.dyndns.org",
-        "nome": "anacristina",
+        "nome": "Ana Cristina",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.10.33",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUERADE WANS",
                 "IP": "",
@@ -2879,8 +3159,13 @@
     {
         "id": "057",
         "dominio": "cond-marcelinoi.dyndns.org",
-        "nome": "marcelino i",
+        "nome": "Marcelino I",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.10.225",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUERADE WANS",
                 "IP": "",
@@ -2916,8 +3201,13 @@
     {
         "id": "058",
         "dominio": "cond-joaofrancisco.dyndns.org",
-        "nome": "joao francisco",
+        "nome": "João Francisco",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.11.33",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.11.36",
@@ -2978,8 +3268,13 @@
     {
         "id": "059",
         "dominio": "cond-pacodoatlantico.dyndns.org",
-        "nome": "pa\\xe7o do atlantico",
+        "nome": "Paço do Atlântico",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.11.97",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.11.100",
@@ -3028,6 +3323,11 @@
         "nome": "sagarana",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "192.168.12.33",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.12.36",
                 "Porta": "8889"
@@ -3059,6 +3359,11 @@
         "dominio": "cond-pajucara.dyndns.org",
         "nome": "pajucara",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.12.1",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.12.4",
@@ -3099,8 +3404,13 @@
     {
         "id": "062",
         "dominio": "cond-dulcerodrigues.dyndns.org",
-        "nome": "dulce rodrigues ",
+        "nome": "Dulce Rodrigues",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.12.129",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.12.132",
@@ -3131,8 +3441,13 @@
     {
         "id": "063",
         "dominio": "cond-anaregina.dyndns.org",
-        "nome": "ana regina ",
+        "nome": "Ana Regina",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.13.1",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA-BLOCO A",
                 "IP": "192.168.13.8",
@@ -3203,8 +3518,13 @@
     {
         "id": "064",
         "dominio": "cond-lancaster.dyndns.org",
-        "nome": "lancaster",
+        "nome": "Lancaster",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.11.65",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUEREDE",
                 "IP": "",
@@ -3245,8 +3565,13 @@
     {
         "id": "065",
         "dominio": "cond-lulacardoso.dyndns.org",
-        "nome": "lulacardoso",
+        "nome": "Lula Cardoso",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.11.129",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -3327,8 +3652,13 @@
     {
         "id": "066",
         "dominio": "cond-chateaulacave.dyndns.org",
-        "nome": "chateaulacave ",
+        "nome": "Chateau Lacave",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.12.225",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA (AUTONOMO)",
                 "IP": "192.168.12.231",
@@ -3364,8 +3694,13 @@
     {
         "id": "067",
         "dominio": "cond-ilhadecapri.dyndns.org",
-        "nome": "ilha de capri",
+        "nome": "Ilha de Capri",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.13.33",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.13.36",
@@ -3411,8 +3746,13 @@
     {
         "id": "068",
         "dominio": "cond-pedrorodrigues.dyndns.org",
-        "nome": "pedro rodriges",
+        "nome": "Pedro Rodriges",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.14.1",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUERADE WANS",
                 "IP": "",
@@ -3458,8 +3798,13 @@
     {
         "id": "069",
         "dominio": "cond-pracadoatlantico2.dyndns.org",
-        "nome": "pra\\xe7a do atlantico",
+        "nome": "Praça Do Atlantico",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.13.65",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.13.68",
@@ -3515,8 +3860,13 @@
     {
         "id": "070",
         "dominio": "cond-joseferreirapinto.dyndns.org",
-        "nome": "joseferreirapinto",
+        "nome": "Jose Ferreira Pinto",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "192.168.14.65",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -3570,6 +3920,11 @@
         "nome": "luau",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.14.132",
                 "Porta": "8889"
@@ -3601,6 +3956,11 @@
         "dominio": "cond-arcadia.dyndns.org",
         "nome": "arcadia",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -3653,6 +4013,11 @@
         "dominio": "cond-atalaia.dyndns.org",
         "nome": "atalaia",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.9.4",
@@ -3711,6 +4076,11 @@
         "nome": "solar de candeias ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.13.164",
                 "Porta": "8889"
@@ -3763,6 +4133,11 @@
         "nome": "jorge felipe ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.13.132",
                 "Porta": "8889"
@@ -3804,6 +4179,11 @@
         "dominio": "cond-coliseu.dyndns.org",
         "nome": "coliseu",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -3852,6 +4232,11 @@
         "nome": "ilha de rhodes",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.14.164",
                 "Porta": "8889"
@@ -3893,6 +4278,11 @@
         "dominio": "cond-selmasuassuna.dyndns.org",
         "nome": "selma suassuna << n\\xe3o alterar",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.26.68",
@@ -3951,6 +4341,11 @@
         "nome": "alice maria ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.15.36",
                 "Porta": "8889"
@@ -3988,6 +4383,11 @@
         "nome": "teorema",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.10.90",
                 "Porta": "8889"
@@ -4024,6 +4424,11 @@
         "dominio": "cond-marbella.dyndns.org",
         "nome": "marbella",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.15.68",
@@ -4066,6 +4471,11 @@
         "dominio": "cond-conlar.dyndns.org",
         "nome": "cond-conlar ",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP - RUA+TRONCO",
                 "IP": "192.168.15.100",
@@ -4114,6 +4524,11 @@
         "nome": "manoel de brito",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.13.102",
                 "Porta": "8889"
@@ -4150,6 +4565,11 @@
         "dominio": "cond-quintamanoel.dyndns.org",
         "nome": "quinta manoel rodrigues ",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.14.60",
@@ -4208,6 +4628,11 @@
         "nome": "abiliotavares ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.9.34",
                 "Porta": "8889"
@@ -4249,6 +4674,11 @@
         "dominio": "cond-belavistaqualiport.dyndns.org",
         "nome": "bela vista ",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.16.4",
@@ -4297,6 +4727,11 @@
         "nome": "bongi",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.8.4",
                 "Porta": "8889"
@@ -4343,6 +4778,11 @@
         "dominio": "cond-bosquetacaruna.dyndns.org",
         "nome": "bosquetacaruna",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.14.99",
@@ -4406,6 +4846,11 @@
         "nome": "alameda dos ipes",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.22.228",
                 "Porta": "8889"
@@ -4457,6 +4902,11 @@
         "dominio": "cond-baraodemelgaco.dyndns.org",
         "nome": "barao de melgaco",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUERED",
                 "IP": "",
@@ -4520,6 +4970,11 @@
         "nome": "genesis",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA FXS BLOCO A RUA",
                 "IP": "192.168.16.36",
                 "Porta": "8889"
@@ -4571,6 +5026,11 @@
         "dominio": "cond-medusa.dyndns.org",
         "nome": "medusa",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.15.132",
@@ -4624,6 +5084,11 @@
         "nome": "praca das orquideas",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.15.10",
                 "Porta": "8889"
@@ -4675,6 +5140,11 @@
         "dominio": "cond-ricardoii.dyndns.org",
         "nome": "ricardo ii",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA UTECH",
                 "IP": "192.168.4.132",
@@ -4738,6 +5208,11 @@
         "nome": "maria ortelia ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "MASCARED",
                 "IP": "",
                 "Porta": ""
@@ -4775,6 +5250,11 @@
         "nome": "maria diva ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.16.228",
                 "Porta": "8889"
@@ -4811,6 +5291,11 @@
         "dominio": "cond-saintmichel.dyndns.org",
         "nome": "saint michel",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.16.132",
@@ -4884,6 +5369,11 @@
         "nome": "vila do mar ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.16.196",
                 "Porta": "8889"
@@ -4935,6 +5425,11 @@
         "dominio": "cond-manaca1.dyndns.org",
         "nome": "manaca",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.10.164",
@@ -5003,6 +5498,11 @@
         "nome": "bali",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA N\\xc3O TEM. AUTONOMO",
                 "IP": "192.168.12.164",
                 "Porta": "8889"
@@ -5054,6 +5554,11 @@
         "dominio": "cond-hortenciaqualiport.dyndns.org",
         "nome": "hortencia",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.17.164",
@@ -5117,6 +5622,11 @@
         "nome": "alamenda monica campos ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.13.196",
                 "Porta": "8889"
@@ -5153,6 +5663,11 @@
         "dominio": "cond-centauro.dyndns.org",
         "nome": "centauro",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.16.125",
@@ -5206,6 +5721,11 @@
         "nome": "concorde",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.17.100",
                 "Porta": "8889"
@@ -5248,6 +5768,11 @@
         "nome": "ebano",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.18.4",
                 "Porta": "8889"
@@ -5279,6 +5804,11 @@
         "dominio": "cond-pedradetoque.dyndns.org",
         "nome": "pedra de toque",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.17.132",
@@ -5327,6 +5857,11 @@
         "nome": "ivone asfora",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.17.4",
                 "Porta": "8889"
@@ -5369,6 +5904,11 @@
         "nome": "ilha de santorini",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.15.196",
                 "Porta": "8889"
@@ -5400,6 +5940,11 @@
         "dominio": "cond-casaalta.dyndns.org",
         "nome": "casa alta ",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUEREDA",
                 "IP": "",
@@ -5438,6 +5983,11 @@
         "nome": "congresso dos passaros ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.18.100",
                 "Porta": "8889"
@@ -5469,6 +6019,11 @@
         "dominio": "cond-quintadatridade.dyndns.org",
         "nome": "quinta da trindade",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.18.132",
@@ -5547,6 +6102,11 @@
         "nome": "mar doce",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.18.228",
                 "Porta": "8889"
@@ -5594,6 +6154,11 @@
         "nome": "le meridien",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.19.4",
                 "Porta": "8889"
@@ -5625,6 +6190,11 @@
         "dominio": "cond-tiagoonofre1.dyndns.org",
         "nome": "tiago onofre",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.5.100",
@@ -5662,6 +6232,11 @@
         "dominio": "cond-agragarden.dyndns.org",
         "nome": "agra garden",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -5710,6 +6285,11 @@
         "nome": "loft home  design",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.19.36",
                 "Porta": "8889"
@@ -5751,6 +6331,11 @@
         "dominio": "cond-maresol.dyndns.org",
         "nome": "mar & sol",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.18.196",
@@ -5794,6 +6379,11 @@
         "nome": "principe de orange",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.19.100",
                 "Porta": "8889"
@@ -5830,6 +6420,11 @@
         "dominio": "cond-antigua.dyndns.org",
         "nome": "antigua",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.20.164",
@@ -5893,6 +6488,11 @@
         "nome": "viana castelo ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.19.132",
                 "Porta": "8889"
@@ -5955,6 +6555,11 @@
         "nome": "aquarius",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.19.228",
                 "Porta": "8889"
@@ -5986,6 +6591,11 @@
         "dominio": "cond-yvressesvillage.dyndns.org",
         "nome": "yvresses village",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.1.164",
@@ -6039,6 +6649,11 @@
         "nome": "contato",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA FXO",
                 "IP": "192.168.20.132",
                 "Porta": "8889"
@@ -6086,6 +6701,11 @@
         "nome": "joao paulo ii",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP ACESSO WEB",
                 "IP": "192.168.20.36",
                 "Porta": "8889"
@@ -6127,6 +6747,11 @@
         "dominio": "cond-vitoria.dyndns.org",
         "nome": "vitoria regia",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA - KHOMP ACESSO WEB",
                 "IP": "192.168.23.36",
@@ -6180,6 +6805,11 @@
         "nome": "henrique ii",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA FXO",
                 "IP": "192.168.23.196",
                 "Porta": "8889"
@@ -6221,6 +6851,11 @@
         "dominio": "cond-guimaraesrosa.dyndns.org",
         "nome": "guimaras rosa ",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP / FXO",
                 "IP": "192.168.23.164",
@@ -6294,6 +6929,11 @@
         "nome": "portal marcos de aguiar ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.23.228",
                 "Porta": "8888"
@@ -6340,6 +6980,11 @@
         "dominio": "cond-pracadabarra.dyndns.org",
         "nome": "pra\\xe7a da barra",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.8.100",
@@ -6388,6 +7033,11 @@
         "nome": "egas monis",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.23.132",
                 "Porta": "8887"
@@ -6424,6 +7074,11 @@
         "dominio": "cond-guainazes.dyndns.org",
         "nome": "guainazes",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.23.100",
@@ -6487,6 +7142,11 @@
         "nome": "isadora beltrao",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.18.164",
                 "Porta": "8889"
@@ -6528,6 +7188,11 @@
         "dominio": "cond-pasargada.dyndns.org",
         "nome": "pasargada ",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.25.4",
@@ -6591,6 +7256,11 @@
         "nome": "juliana ii",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "LEITOR FACIAL PEDESTRE RUA",
                 "IP": "192.168.20.99",
                 "Porta": "8086"
@@ -6627,6 +7297,11 @@
         "dominio": "cond-serafim.dyndns.org",
         "nome": "serafim ",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.25.121",
@@ -6675,6 +7350,11 @@
         "nome": "jaqueira park",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.12.66",
                 "Porta": "8889"
@@ -6706,6 +7386,11 @@
         "dominio": "cond-karpathos.dyndns.org",
         "nome": "karpathos",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.25.68",
@@ -6794,6 +7479,11 @@
         "nome": "jaqueira parklane",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.8.132",
                 "Porta": "8889"
@@ -6846,6 +7536,11 @@
         "nome": "serra azul ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.26.100",
                 "Porta": "8889"
@@ -6887,6 +7582,11 @@
         "dominio": "cond-abiliomuniz.dyndns.org",
         "nome": "abilio muniz",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.26.132",
@@ -6939,6 +7639,11 @@
         "dominio": "cond-elisregina.dyndns.org",
         "nome": "elis regina",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.25.228",
@@ -6997,6 +7702,11 @@
         "nome": "marina do cupe",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "GUARITA",
                 "IP": "192.168.26.168",
                 "Porta": "8093"
@@ -7023,6 +7733,11 @@
         "dominio": "cond-delmar.dyndns.org",
         "nome": "villa del mar ",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "GUARITA",
                 "IP": "192.168.25.168",
@@ -7066,6 +7781,11 @@
         "nome": "estacaoverde",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.25.196",
                 "Porta": "8889"
@@ -7107,6 +7827,11 @@
         "dominio": "cond-guinlespark.dyndns.org",
         "nome": "guinles park",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCAREDE",
                 "IP": "",
@@ -7165,6 +7890,11 @@
         "nome": "prive porto alegre",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.5.68",
                 "Porta": "8889"
@@ -7206,6 +7936,11 @@
         "dominio": "cond-pedrodemelo.dyndns.org",
         "nome": "pedro de melo",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.1.100",
@@ -7263,6 +7998,11 @@
         "dominio": "cond-portoclassic.dyndns.org",
         "nome": "porto classic",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -7326,6 +8066,11 @@
         "nome": "cond de savoia",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.3.68",
                 "Porta": "8889"
@@ -7388,6 +8133,11 @@
         "nome": "pra\\xe7a floral do mar",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.26.228",
                 "Porta": "8889"
@@ -7439,6 +8189,11 @@
         "dominio": "cond-parkbenvinda.dyndns.org",
         "nome": "park benvinda de farias",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.27.4",
@@ -7502,6 +8257,11 @@
         "nome": "pra\\xe7a das papoulas",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.27.36",
                 "Porta": "8889"
@@ -7553,6 +8313,11 @@
         "dominio": "cond-monetqualiport.dyndns.org",
         "nome": "monet",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.27.68",
@@ -7611,6 +8376,11 @@
         "nome": "vania vidal",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.27.100",
                 "Porta": "8889"
@@ -7668,6 +8438,11 @@
         "nome": "amboise",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.27.164",
                 "Porta": "8889"
@@ -7719,6 +8494,11 @@
         "dominio": "cond-ladyfabiana.dyndns.org",
         "nome": "lady fabiana",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.27.196",
@@ -7792,6 +8572,11 @@
         "nome": "chievo verona",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.27.228",
                 "Porta": "8889"
@@ -7864,6 +8649,11 @@
         "nome": "pra\\xc7a flamboyants",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "MASQUERAD",
                 "IP": "",
                 "Porta": ""
@@ -7915,6 +8705,11 @@
         "dominio": "cond-canopus.dyndns.org",
         "nome": "canopus",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.29.68",
@@ -7977,6 +8772,11 @@
         "dominio": "cond-cidadeistambul.dyndns.org",
         "nome": "cidade istambul",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.29.121",
@@ -8050,6 +8850,11 @@
         "nome": "scandinavia",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.29.196",
                 "Porta": "8889"
@@ -8091,6 +8896,11 @@
         "dominio": "cond-montedosguararapes.dyndns.org",
         "nome": "monte dos guararapes",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUERED",
                 "IP": "",
@@ -8153,6 +8963,11 @@
         "dominio": "cond-damasco.dyndns.org",
         "nome": "damasco",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUERAD",
                 "IP": "",
@@ -8221,6 +9036,11 @@
         "nome": "yokohama",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.30.36",
                 "Porta": "8889"
@@ -8273,6 +9093,11 @@
         "nome": "belmino correa",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.30.132",
                 "Porta": "8889"
@@ -8314,6 +9139,11 @@
         "dominio": "cond-jardim.dyndns.org",
         "nome": "jardim",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.30.186",
@@ -8376,6 +9206,11 @@
         "dominio": "cond-deco.dyndns.org",
         "nome": "deco",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.30.196",
@@ -8459,6 +9294,11 @@
         "nome": "laje de pedra",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.30.228",
                 "Porta": "8889"
@@ -8505,6 +9345,11 @@
         "dominio": "cond-lechateaubrissac.dyndns.org",
         "nome": "lechateau brissac",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA FXO",
                 "IP": "192.168.31.4",
@@ -8568,6 +9413,11 @@
         "nome": "costa victoria",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.31.36",
                 "Porta": "8889"
@@ -8625,6 +9475,11 @@
         "nome": "monsarraz",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.31.100",
                 "Porta": "8889"
@@ -8672,6 +9527,11 @@
         "nome": "porto kai",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "GUARITA",
                 "IP": "192.168.31.187",
                 "Porta": "8093"
@@ -8708,6 +9568,11 @@
         "dominio": "cond-guadalajara.dyndns.org",
         "nome": "guadalajara",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.31.228",
@@ -8755,6 +9620,11 @@
         "dominio": "cond-riojurua.dyndns.org",
         "nome": "rio jurua",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.32.196",
@@ -8812,6 +9682,11 @@
         "dominio": "cond-adriano1.dyndns.org",
         "nome": "adriano1",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.32.100",
@@ -8875,6 +9750,11 @@
         "nome": "praia venda gr",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.32.183",
                 "Porta": "8889"
@@ -8926,6 +9806,11 @@
         "dominio": "cond-spazioclassic.dyndns.org",
         "nome": "spazio classic",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.32.4",
@@ -8979,6 +9864,11 @@
         "nome": "paulo brito",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.32.36",
                 "Porta": "8889"
@@ -9026,6 +9916,11 @@
         "nome": "duborck",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.32.132",
                 "Porta": "8889"
@@ -9067,6 +9962,11 @@
         "dominio": "cond-vilaverdeturmalina.dyndns.org",
         "nome": "villa verde turmalina",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUERAD",
                 "IP": "",
@@ -9119,6 +10019,11 @@
         "dominio": "cond-mariacecilia.dyndns.org",
         "nome": "maria cecilia",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.33.132",
@@ -9197,6 +10102,11 @@
         "nome": "bangue",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.33.100",
                 "Porta": "8889"
@@ -9269,6 +10179,11 @@
         "nome": "rio tocantins",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.33.164",
                 "Porta": "8889"
@@ -9315,6 +10230,11 @@
         "dominio": "cond-portoathenas.dyndns.org",
         "nome": "porto athenas",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.33.36",
@@ -9383,6 +10303,11 @@
         "nome": "prive du virage",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.33.202",
                 "Porta": "8889"
@@ -9419,6 +10344,11 @@
         "dominio": "cond-bracife.dyndns.org",
         "nome": "bracife",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.33.228",
@@ -9471,6 +10401,11 @@
         "dominio": "cond-marialuiza.dyndns.org",
         "nome": "maria luiza",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.34.4",
@@ -9529,6 +10464,11 @@
         "nome": "cupe exclusive",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.34.36",
                 "Porta": "8889"
@@ -9570,6 +10510,11 @@
         "dominio": "cond-rafaelagoncalves.dyndns.org",
         "nome": "rafaela goncalves",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.34.100",
@@ -9653,6 +10598,11 @@
         "nome": "ilhademikonos",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.34.68",
                 "Porta": "8889"
@@ -9725,6 +10675,11 @@
         "nome": "janaina",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.34.132",
                 "Porta": "8889"
@@ -9771,6 +10726,11 @@
         "dominio": "cond-ticiana.dyndns.org",
         "nome": "ticiana",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.34.196",
@@ -9823,6 +10783,11 @@
         "dominio": "cond-armandocavani.dyndns.org",
         "nome": "armando cavani",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.34.228",
@@ -9901,6 +10866,11 @@
         "nome": "alfredo farias",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.34.164",
                 "Porta": "8889"
@@ -9963,6 +10933,11 @@
         "nome": "residencial dspain",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.35.36",
                 "Porta": "8889"
@@ -10004,6 +10979,11 @@
         "dominio": "cond-solardeboaviagem.dyndns.org",
         "nome": "solar de boa viagem",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.35.4",
@@ -10057,6 +11037,11 @@
         "nome": "solar de sicupema",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.35.68",
                 "Porta": "8889"
@@ -10103,6 +11088,11 @@
         "dominio": "cond-carvalho.dyndns.org",
         "nome": "carvalho",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.35.100",
@@ -10151,6 +11141,11 @@
         "nome": "pedra do conde",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.35.164",
                 "Porta": "8889"
@@ -10197,6 +11192,11 @@
         "dominio": "cond-maranguape.dyndns.org",
         "nome": "maranguape",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASQUARED",
                 "IP": "",
@@ -10265,6 +11265,11 @@
         "nome": "fonte atlantico",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.35.228",
                 "Porta": "8889"
@@ -10332,6 +11337,11 @@
         "nome": "ana eduarda",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.36.36",
                 "Porta": "8889"
@@ -10368,6 +11378,11 @@
         "dominio": "cond-dover.dyndns.org",
         "nome": "dover",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.36.68",
@@ -10410,6 +11425,11 @@
         "dominio": "cond-vilmalucia.dyndns.org",
         "nome": "vilma lucia",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.36.4",
@@ -10478,6 +11498,11 @@
         "nome": "antonio acau",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.36.100",
                 "Porta": "8889"
@@ -10540,6 +11565,11 @@
         "nome": "princesa leopoldina",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.36.132",
                 "Porta": "8889"
@@ -10591,6 +11621,11 @@
         "dominio": "cond-elisa.dyndns.org",
         "nome": "elisa",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.36.164",
@@ -10644,6 +11679,11 @@
         "nome": "antalia",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.36.196",
                 "Porta": "8889"
@@ -10695,6 +11735,11 @@
         "dominio": "cond-villacaxanga.dyndns.org",
         "nome": "villa caxanga",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.36.228",
@@ -10753,6 +11798,11 @@
         "nome": "volendam",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.37.4",
                 "Porta": "8889"
@@ -10799,6 +11849,11 @@
         "dominio": "cond-luardoporto.dyndns.org",
         "nome": "luar do porto",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.37.36",
@@ -10851,6 +11906,11 @@
         "dominio": "cond-piazzapedromarcos.dyndns.org",
         "nome": "piazza s.pedro/s.marcos",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.37.68",
@@ -10934,6 +11994,11 @@
         "nome": "empresarial master",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.37.132",
                 "Porta": "8889"
@@ -10985,6 +12050,11 @@
         "dominio": "cond-santatereza.dyndns.org",
         "nome": "santa tereza",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -11038,6 +12108,11 @@
         "nome": "leonardo jose",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "MASCARED",
                 "IP": "",
                 "Porta": ""
@@ -11084,6 +12159,11 @@
         "dominio": "cond-saosebastiao.dyndns.org",
         "nome": "sao sebastiao",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.38.68",
@@ -11136,6 +12216,11 @@
         "dominio": "cond-anapaula.dyndns.org",
         "nome": "ana paula",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.38.36",
@@ -11199,6 +12284,11 @@
         "nome": "prive serra florada",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.38.100",
                 "Porta": "8889"
@@ -11235,6 +12325,11 @@
         "dominio": "cond-pracadashortensias.dyndns.org",
         "nome": "praca das hortesias",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.38.132",
@@ -11308,6 +12403,11 @@
         "nome": "the park",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.38.164",
                 "Porta": "8889"
@@ -11380,6 +12480,11 @@
         "nome": "santa luzia",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.38.196",
                 "Porta": "8889"
@@ -11432,6 +12537,11 @@
         "nome": "salvador de sa",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.38.230",
                 "Porta": "8889"
@@ -11479,6 +12589,11 @@
         "nome": "vale jardim atlantico",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.39.36",
                 "Porta": "8889"
@@ -11520,6 +12635,11 @@
         "dominio": "cond-albuquerquemoreira.dyndns.org",
         "nome": "albuqueque moreira",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.39.100",
@@ -11578,6 +12698,11 @@
         "nome": "ancoradouro",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.39.132",
                 "Porta": "8889"
@@ -11625,6 +12750,11 @@
         "nome": "monteverdi",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.39.164",
                 "Porta": "8889"
@@ -11671,6 +12801,11 @@
         "dominio": "cond-vaniasouzaleao.dyndns.org",
         "nome": "vania souza leao",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.39.228",
@@ -11729,6 +12864,11 @@
         "nome": "tresor",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.39.196",
                 "Porta": "8889"
@@ -11775,6 +12915,11 @@
         "dominio": "cond-azaleias.dyndns.org",
         "nome": "pra\\xe7a das azaleias",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "PORTEIRO INTERCOM",
                 "IP": "192.168.22.34",
@@ -11838,6 +12983,11 @@
         "nome": "taua",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "MASCARED",
                 "IP": "",
                 "Porta": ""
@@ -11885,6 +13035,11 @@
         "nome": "solar dos lordes",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.26.16",
                 "Porta": "8889"
@@ -11926,6 +13081,11 @@
         "dominio": "cond-cory.dyndns.org",
         "nome": "cory",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA UTECH",
                 "IP": "192.168.28.36",
@@ -12024,6 +13184,11 @@
         "nome": "torre eiffel",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.8.164",
                 "Porta": "8889"
@@ -12065,6 +13230,11 @@
         "dominio": "cond-frontenac.dyndns.org",
         "nome": "frontenac",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.20.196",
@@ -12133,6 +13303,11 @@
         "nome": "villa del porto",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP",
                 "IP": "192.168.1.36",
                 "Porta": "8889"
@@ -12180,6 +13355,11 @@
         "nome": "maria celina ",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA KHOMP PEDESTRE FXS/FXO",
                 "IP": "192.168.20.28",
                 "Porta": "8889"
@@ -12221,6 +13401,11 @@
         "dominio": "cond-richelieu.dyndns.org",
         "nome": "richelieu",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.23.28",
@@ -12268,6 +13453,11 @@
         "dominio": "cond-manoelbatista.dyndns.org",
         "nome": "manoel batista",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.26.196",
@@ -12320,6 +13510,11 @@
         "dominio": "cond-costadoscorais.dyndns.org",
         "nome": "costa dos corais",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.15.229",
@@ -12382,6 +13577,11 @@
         "dominio": "cond-netuno.dyndns.org",
         "nome": "netuno",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "MASCARED",
                 "IP": "",
@@ -12450,6 +13650,11 @@
         "nome": "unidos",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "masquerad",
                 "IP": "",
                 "Porta": ""
@@ -12481,6 +13686,11 @@
         "dominio": "cond-torremolinos.dyndns.org",
         "nome": "torremolinos",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.29.132",
@@ -12554,6 +13764,11 @@
         "nome": "caze",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.31.196",
                 "Porta": "8889"
@@ -12621,6 +13836,11 @@
         "nome": "yanaconcha",
         "nat": [
             {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
+            {
                 "Nome": "ATA",
                 "IP": "192.168.35.196",
                 "Porta": "8889"
@@ -12677,6 +13897,11 @@
         "dominio": "cond-magdasuassuna.dyndns.org",
         "nome": "magda suassuna",
         "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "0",
+                "Porta": "7890"
+            },
             {
                 "Nome": "ATA",
                 "IP": "192.168.37.100",

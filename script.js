@@ -95,8 +95,8 @@ function createButtons(condominio, card) {
     const nome = dispositivo.Nome.toUpperCase();
     const porta = dispositivo.Porta;
 
-    // ❌ Condição 1: "FACIAL" + porta com 4 dígitos
-    if (nome.includes("FACIAL") && /^\d{4}$/.test(porta)) return;
+    // // ❌ Condição 1: "FACIAL" + porta com 4 dígitos
+    // if (nome.includes("FACIAL") && /^\d{4}$/.test(porta)) return;
 
     // ❌ Condição 2: "ATA" mas porta diferente de 8889 ou 8887
     if (nome.includes("ATA") && porta !== "8889" && porta !== "8887") return;
