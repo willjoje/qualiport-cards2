@@ -77,38 +77,44 @@ function createButtons(condominio, card) {
   const useIp = useIpMap[condominio.id];
 
   // Botão Mikrotik
-  const mikrotikButton = document.createElement("button");
-  mikrotikButton.innerText = "Mikrotik";
-  mikrotikButton.className = "button";
-  mikrotikButton.style.backgroundColor = "#6666cc"; // cor padrão para botão Mikrotik
-  mikrotikButton.addEventListener("click", function () {
-    const mikrotikUrl = `${condominio.dominio}:7890`;
-    navigator.clipboard.writeText(mikrotikUrl).then(() => {
-      showToast("Copiado: " + mikrotikUrl);
-    }).catch((err) => {
-      console.error("Erro ao copiar Mikrotik:", err);
+  const mikrotikInfo = condominio.nat.find(device => device.Nome.toLowerCase().includes("mikrotik"));
+
+  if (mikrotikInfo) {
+    const mikrotikUrl = useIp
+      ? `${mikrotikInfo.IP}:${mikrotikInfo.Porta}`
+      : `${condominio.dominio}:${mikrotikInfo.Porta}`;
+
+    const mikrotikButton = document.createElement("button");
+    mikrotikButton.innerText = "Mikrotik";
+    mikrotikButton.className = "button";
+    mikrotikButton.style.backgroundColor = useIp ? "#5e2a8a" : "#6666cc"; // roxo escuro ou cor padrão
+
+    mikrotikButton.addEventListener("click", function () {
+      navigator.clipboard.writeText(mikrotikUrl).then(() => {
+        showToast("Copiado: " + mikrotikUrl);
+      }).catch((err) => {
+        console.error("Erro ao copiar Mikrotik:", err);
+      });
     });
-  });
-  card.appendChild(mikrotikButton);
+
+    card.appendChild(mikrotikButton);
+  }
 
   condominio.nat.forEach((dispositivo) => {
     const nome = dispositivo.Nome.toUpperCase();
     const porta = dispositivo.Porta;
 
-    // // ❌ Condição 1: "FACIAL" + porta com 4 dígitos
-    // if (nome.includes("FACIAL") && /^\d{4}$/.test(porta)) return;
-
-    // ❌ Condição 2: "ATA" mas porta diferente de 8889 ou 8887
+    // ❌ Condição 1: "ATA" mas porta diferente de 8889 ou 8887
     if (nome.includes("ATA") && porta !== "8889" && porta !== "8887") return;
 
-    // ❌ Condição 3: "GUARITA" mas porta diferente de 8093
+    // ❌ Condição 2: "GUARITA" mas porta diferente de 8093
     if (nome.includes("GUARITA") && porta !== "8093") return;
 
-    // ❌ Condição 4: "DVR" + porta com 4 dígitos
-    // if (nome.includes("DVR") && /^\d{4}$/.test(porta)) return;
-
-    // ❌ Condição 5: Nome contém "MASQUERADE"
+    // ❌ Condição 3: Nome contém "MASQUERADE"
     if (nome.includes("MASQUERADE")) return;
+
+    // ❌ Condição 4: Nome contém "Mikrotik"
+    if (porta.includes("7890")) return;
 
     // ✅ Criação do botão se passou pelos filtros
     const botao = document.createElement("button");
@@ -133,6 +139,7 @@ function createButtons(condominio, card) {
     card.appendChild(botao);
   });
 }
+
 
 
 document.getElementById('search-bar').addEventListener("input", matchingCards);
