@@ -2075,7 +2075,7 @@
         "nat": [
             {
                 "Nome": "Mikrotik",
-                "IP": "192.168.13.225",
+                "IP": "",
                 "Porta": "7890"
             },
             {
@@ -4413,7 +4413,7 @@
         "nat": [
             {
                 "Nome": "Mikrotik",
-                "IP": "192.168.15.97",
+                "IP": "",
                 "Porta": "7890"
             },
             {
@@ -13142,7 +13142,7 @@
         "nat": [
             {
                 "Nome": "Mikrotik",
-                "IP": "0",
+                "IP": "",
                 "Porta": "7890"
             },
             {
@@ -13851,6 +13851,502 @@
                 "Nome": "MODEM TIM",
                 "IP": "192.168.1.1",
                 "Porta": "22394"
+            }
+        ]
+    },
+    {
+        "id": "246",
+        "dominio": "cond-villalaplaya.dyndns.org",
+        "nome": "Villa La Playa",
+        "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "",
+                "Porta": "7890"
+            },
+            {
+                "Nome": "ATA",
+                "IP": "192.168.38.4",
+                "Porta": "8889"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.38.7",
+                "Porta": "8093"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.38.7",
+                "Porta": "9007"
+            },
+            {
+                "Nome": "DVR",
+                "IP": "192.168.38.5",
+                "Porta": "6036"
+            },
+            {
+                "Nome": "DVR WEB",
+                "IP": "192.168.38.5",
+                "Porta": "22421"
+            },
+            {
+                "Nome": "FACIAL RUA",
+                "IP": "192.168.38.2",
+                "Porta": "22422"
+            },
+            {
+                "Nome": "FACIAL ACESSO APTS",
+                "IP": "192.168.38.3",
+                "Porta": "22423"
+            },
+            {
+                "Nome": "FACIAL HALL FUNDOS",
+                "IP": "192.168.38.9",
+                "Porta": "22424"
+            },
+            {
+                "Nome": "FACIAL PRAIA",
+                "IP": "192.168.38.10",
+                "Porta": "22425"
+            }
+        ]
+    },
+    {
+        "id": "247",
+        "dominio": "cond-ladysarisse.dyndns.org",
+        "nome": "LADY SARISSE",
+        "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "",
+                "Porta": "7890"
+            },
+            {
+                "Nome": "ATA",
+                "IP": "192.168.32.228",
+                "Porta": "8889"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.32.231",
+                "Porta": "8093"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.32.231",
+                "Porta": "9007"
+            },
+            {
+                "Nome": "DVR",
+                "IP": "192.168.32.229",
+                "Porta": "6036"
+            },
+            {
+                "Nome": "DVR WEB",
+                "IP": "192.168.32.229",
+                "Porta": "22051"
+            },
+            {
+                "Nome": "DVR 2",
+                "IP": "192.168.32.230",
+                "Porta": "6037"
+            },
+            {
+                "Nome": "DVR WEB 2",
+                "IP": "192.168.32.230",
+                "Porta": "22054"
+            },
+            {
+                "Nome": "FACIAL RUA",
+                "IP": "192.168.32.226",
+                "Porta": "22052"
+            },
+            {
+                "Nome": "FACIAL ECLUSA",
+                "IP": "192.168.32.227",
+                "Porta": "22053"
+            }
+        ]
+    },
+    {
+        "id": "248",
+        "dominio": "cond-turmalina.dyndns.org",
+        "nome": "TURMALINA",
+        "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "",
+                "Porta": "7890"
+            },
+            {
+                "Nome": "ATA",
+                "IP": "192.168.30.100",
+                "Porta": "8889"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.30.103",
+                "Porta": "8093"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.30.103",
+                "Porta": "9007"
+            },
+            {
+                "Nome": "DVR  1",
+                "IP": "192.168.30.102",
+                "Porta": "6037"
+            },
+            {
+                "Nome": "DVR WEB 1",
+                "IP": "192.168.30.102",
+                "Porta": "21894"
+            },
+            {
+                "Nome": "DVR WEB 2",
+                "IP": "192.168.30.101",
+                "Porta": "21891"
+            },
+            {
+                "Nome": "DVR 3",
+                "IP": "192.168.30.104",
+                "Porta": "6038"
+            },
+            {
+                "Nome": "DVR WEB 3",
+                "IP": "192.168.30.104",
+                "Porta": "21895"
+            },
+            {
+                "Nome": "FACIAL RUA",
+                "IP": "192.168.30.98",
+                "Porta": "21892"
+            },
+            {
+                "Nome": "DVR 2",
+                "IP": "192.168.30.101",
+                "Porta": "6036"
+            },
+            {
+                "Nome": "FACIAL ECLUSA",
+                "IP": "192.168.30.99",
+                "Porta": "21893"
+            },
+            {
+                "Nome": "MODEM",
+                "IP": "192.168.0.1",
+                "Porta": "21896"
+            }
+        ]
+    },
+    {
+        "id": "249",
+        "dominio": "cond-bitacora.dyndns.org",
+        "nome": "Bitacora",
+        "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "",
+                "Porta": "7890"
+            },
+            {
+                "Nome": "ATA",
+                "IP": "192.168.27.132",
+                "Porta": "8889"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.27.135",
+                "Porta": "8093"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.27.135",
+                "Porta": "9007"
+            },
+            {
+                "Nome": "DVR",
+                "IP": "192.168.27.133",
+                "Porta": "6036"
+            },
+            {
+                "Nome": "DVR WEB",
+                "IP": "192.168.27.133",
+                "Porta": "21731"
+            },
+            {
+                "Nome": "DVR 2",
+                "IP": "192.168.27.134",
+                "Porta": "6037"
+            },
+            {
+                "Nome": "DVR WEB 2",
+                "IP": "192.168.27.134",
+                "Porta": "21732"
+            },
+            {
+                "Nome": "FACIAL GARAGEM",
+                "IP": "192.168.27.130",
+                "Porta": "21733"
+            },
+            {
+                "Nome": "FACIAL HALL",
+                "IP": "192.168.27.131",
+                "Porta": "21734"
+            },
+            {
+                "Nome": "FACIAL RUA",
+                "IP": "192.168.27.136",
+                "Porta": "21735"
+            },
+            {
+                "Nome": "FACIAL HAKVISION",
+                "IP": "192.168.27.151",
+                "Porta": "21737"
+            },
+            {
+                "Nome": "ACESSO LINK",
+                "IP": "192.168.0.1",
+                "Porta": "21736"
+            },
+            {
+                "Nome": "MODEM TIM",
+                "IP": "192.168.1.1",
+                "Porta": "21738"
+            }
+        ]
+    },
+    {
+        "id": "250",
+        "dominio": "cond-piazzadoscarvalhos.dyndns.org",
+        "nome": "PiazzaDosCarvalhos",
+        "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "",
+                "Porta": "7890"
+            },
+            {
+                "Nome": "MASQUERADE WANS",
+                "IP": "",
+                "Porta": ""
+            },
+            {
+                "Nome": "ATA",
+                "IP": "192.168.9.220",
+                "Porta": "8889"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.9.199",
+                "Porta": "8093"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.9.199",
+                "Porta": "9007"
+            },
+            {
+                "Nome": "PORTEIRO RUA FRENTE",
+                "IP": "192.168.9.194",
+                "Porta": "8085"
+            },
+            {
+                "Nome": "PORTEIRO ECLUSA FRENTE",
+                "IP": "192.168.9.195",
+                "Porta": "8086"
+            },
+            {
+                "Nome": "DVR",
+                "IP": "192.168.9.197",
+                "Porta": "6036"
+            },
+            {
+                "Nome": "DVR 2",
+                "IP": "192.168.9.198",
+                "Porta": "6037"
+            },
+            {
+                "Nome": "DVR WEB",
+                "IP": "192.168.9.197",
+                "Porta": "20521"
+            },
+            {
+                "Nome": "DVR WEB 2",
+                "IP": "192.168.9.198",
+                "Porta": "20522"
+            }
+        ]
+    },
+    {
+        "id": "251",
+        "dominio": "cond-ubajara.dyndns.org",
+        "nome": "Ubajara",
+        "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "",
+                "Porta": "7890"
+            },
+            {
+                "Nome": "ATA",
+                "IP": "192.168.10.132",
+                "Porta": "8889"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.10.135",
+                "Porta": "8093"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.10.135",
+                "Porta": "9007"
+            },
+            {
+                "Nome": "DVR",
+                "IP": "192.168.10.133",
+                "Porta": "6036"
+            },
+            {
+                "Nome": "DVR WEB",
+                "IP": "192.168.10.133",
+                "Porta": "20582"
+            },
+            {
+                "Nome": "MODEM 4G",
+                "IP": "192.168.0.1",
+                "Porta": "20583"
+            }
+        ]
+    },
+    {
+        "id": "252",
+        "dominio": "cond-sahara.dyndns.org",
+        "nome": "Sahara",
+        "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "",
+                "Porta": "7890"
+            },
+            {
+                "Nome": "MASCARED",
+                "IP": "",
+                "Porta": ""
+            },
+            {
+                "Nome": "ATA----KHOMP",
+                "IP": "192.168.14.228",
+                "Porta": "8889"
+            },
+            {
+                "Nome": "modem",
+                "IP": "192.168.0.1",
+                "Porta": "20915"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.14.231",
+                "Porta": "8093"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.14.231",
+                "Porta": "9007"
+            },
+            {
+                "Nome": "DVR----1",
+                "IP": "192.168.14.229",
+                "Porta": "6036"
+            },
+            {
+                "Nome": "DVR WEB---1",
+                "IP": "192.168.14.229",
+                "Porta": "20911"
+            },
+            {
+                "Nome": "DVR----2",
+                "IP": "192.168.14.230",
+                "Porta": "6037"
+            },
+            {
+                "Nome": "DVR WEB---2",
+                "IP": "192.168.14.230",
+                "Porta": "20912"
+            }
+        ]
+    },
+    {
+        "id": "253",
+        "dominio": "cond-costarica.dyndns.org",
+        "nome": "CostaRica",
+        "nat": [
+            {
+                "Nome": "Mikrotik",
+                "IP": "",
+                "Porta": "7890"
+            },
+            {
+                "Nome": "MASQUERADE WANS",
+                "IP": "",
+                "Porta": ""
+            },
+            {
+                "Nome": "ATA",
+                "IP": "192.168.9.228",
+                "Porta": "8889"
+            },
+            {
+                "Nome": "camera ip",
+                "IP": "192.168.9.250",
+                "Porta": "8085"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.9.231",
+                "Porta": "8093"
+            },
+            {
+                "Nome": "GUARITA",
+                "IP": "192.168.9.231",
+                "Porta": "9007"
+            },
+            {
+                "Nome": "PORTEIRO RUA FRENTE",
+                "IP": "192.168.9.227",
+                "Porta": "8085"
+            },
+            {
+                "Nome": "PORTEIRO ECLUSA FRENTE",
+                "IP": "192.168.9.228",
+                "Porta": "8086"
+            },
+            {
+                "Nome": "DVR",
+                "IP": "192.168.9.229",
+                "Porta": "6036"
+            },
+            {
+                "Nome": "DVR WEB",
+                "IP": "192.168.9.229",
+                "Porta": "20531"
+            },
+            {
+                "Nome": "DVR 2",
+                "IP": "192.168.9.230",
+                "Porta": "6037"
+            },
+            {
+                "Nome": "DVR WEB 2",
+                "IP": "192.168.9.230",
+                "Porta": "20532"
+            },
+            {
+                "Nome": "FACIAL RUA",
+                "IP": "192.168.9.226",
+                "Porta": "20533"
             }
         ]
     }
