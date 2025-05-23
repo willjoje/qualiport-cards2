@@ -35,25 +35,6 @@
       <p class="modal-content"></p>
     </div>
   </dialog>
-
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAATlVnPBF8nV_9D-Oj1g2S1d6M9A3NMZ4",
-      authDomain: "qualiport-cards.firebaseapp.com",
-      projectId: "qualiport-cards",
-      storageBucket: "qualiport-cards.appspot.com",
-      messagingSenderId: "717239443892",
-      appId: "1:717239443892:web:1d295d92e0e1f1a03912e1"
-    };
-    firebase.initializeApp(firebaseConfig);
-
-    firebase.auth().signInWithEmailAndPassword("jefwillyam@gmail.com", "QualiportSuporteTi")
-      .then(response => console.log('Login sucesso:', response))
-      .catch(error => console.log('Erro no login:', error));
-  </script>
   
   <!-- Script principal -->
   <script type="module" src="script.js"></script>
