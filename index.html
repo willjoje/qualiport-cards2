@@ -1,61 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Qualiport Cards</title>
-  <link rel="icon" href="https://qualiport.com.br/imagens-qualiport/144.png" type="image/png" />
-  <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Qualiport Cads</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        @import url(https://db.onlinewebfonts.com/c/2a4248e0df56c884e56c5ac2191bd034?family=Controller+Ext+W01+Five);
+    </style>
+    <link rel="stylesheet" href="./styleLogin.css"/>
 </head>
 
-<div id="toast">Copiado!</div>
-
 <body>
-  
-
-  <!-- Conteúdo principal -->
-  <div class="main-content-wrapper" id="main-content-wrapper">
-    <div class="header">
-      <img id="logo" src="https://www.qualiport.com.br/imagens-qualiport/qualiport-branco.png" alt="Logo Qualiport" />
-
-      <div id="search-block">
-        <input type="text" class="search-bar" id="search-bar" placeholder="Nome do condomínio" />
-        <button id="eraser" class="eraser">X</button>
-      </div>
+    <div id="logo-enclousure">
+        <h1 class="logo">Qualiport </h1>
+        <h1 class="logo logo2">Cards</h1>
     </div>
 
-    <!-- Área de exibição dos cards -->
-    <div class="main-content">
-      <div class="card-container" id="card-container"></div>
+    <div id="form">
+        <h1 id="form-logo">Login</h1>
+        <input type="email" id="username" placeholder="Email" required><br><br>
+        <input type="password" id="password" placeholder="Senha" required><br><br>
+        <button id="btnLogin">Entrar</button>
     </div>
-  </div>
 
-  <!-- Modal (futura implementação) -->
-  <dialog class="modal">
-    <div class="modal-box">
-      <p class="modal-content"></p>
-    </div>
-  </dialog>
+    <script type="module">
+        import { auth } from '../firebase.js';
+        import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js';
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAATlVnPBF8nV_9D-Oj1g2S1d6M9A3NMZ4",
-      authDomain: "qualiport-cards.firebaseapp.com",
-      projectId: "qualiport-cards",
-      storageBucket: "qualiport-cards.appspot.com",
-      messagingSenderId: "717239443892",
-      appId: "1:717239443892:web:1d295d92e0e1f1a03912e1"
-    };
-    firebase.initializeApp(firebaseConfig);
+        document.getElementById("btnLogin").addEventListener("click", async () => {
+        const email = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const msg = document.getElementById("msg");
+        console.log(email,password);
 
-    firebase.auth().signInWithEmailAndPassword("jefwillyam@gmail.com", "QualiportSuporteTi")
-      .then(response => console.log('Login sucesso:', response))
-      .catch(error => console.log('Erro no login:', error));
-  </script>
-
-  <!-- Script principal -->
-  <script type="module" src="script.js"></script>
+        try {   
+            await signInWithEmailAndPassword(auth, email, password);
+            window.location.href = "/home.html";
+        } catch (error) {
+            msg.innerText = "Erro: " + error.message;
+        }
+        });
+    </script>
 </body>
+
 </html>
