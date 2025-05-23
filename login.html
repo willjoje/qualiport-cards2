@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Qualiport Cards</title>
+</head>
+<body>
+  <h2>Login</h2>
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Senha" />
+  <button id="btnLogin">Entrar</button>
+  <p id="msg"></p>
+
+  <script type="module">
+    import { auth } from './firebase.js';
+    import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js';
+
+    document.getElementById("btnLogin").addEventListener("click", async () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const msg = document.getElementById("msg");
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = "dashboard.html";
+      } catch (error) {
+        msg.innerText = "Erro: " + error.message;
+      }
+    });
+  </script>
+</body>
+</html>
