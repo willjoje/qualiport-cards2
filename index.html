@@ -37,7 +37,7 @@
 
         try {   
             await signInWithEmailAndPassword(auth, email, password);
-            window.location.href = "/home.html";
+            window.location.href = "./home.html";
         } catch (error) {
             msg.innerText = "Erro: " + error.message;
         }
