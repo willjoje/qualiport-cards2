@@ -1,16 +1,25 @@
 let listArr = [];
 let useIpMap = {}; // controla se cada condomínio está usando IP ou domínio
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import { db } from "./firebase.js"; // ajuste o nome se for diferente
 
 async function loadData() {
   try {
-    const response = await fetch('InfoCond.json');
-    const data = await response.json();
-    listArr = data;
+    const querySnapshot = await getDocs(collection(db, "condominios"));
+    listArr = [];
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      data.id = doc.id;
+      listArr.push(data);
+    });
+
     createCards(listArr);
   } catch (error) {
-    console.log('Error:', error);
+    console.log("Erro ao carregar dados do Firestore:", error);
   }
 }
+
 
 function createCards(listArr) {
   let cardContainer = document.getElementById("card-container");
