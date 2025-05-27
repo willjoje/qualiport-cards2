@@ -179,6 +179,26 @@ h1 {
 	cursor: pointer;
 }
 
+.adder {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	background-color: #8595be;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 24px;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.adder:hover {
+	background-color: #4f6279;
+	cursor: pointer;
+}
+
 #search-block {
 	display: flex;
 	justify-content: center;
