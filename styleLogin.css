@@ -1,0 +1,73 @@
+body {
+  font-family: "Controller Ext W01 Five", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #163149;
+}
+
+#logo-enclousure {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.logo {
+  font-size: 36px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.logo2 {
+  color: #ffffff; /* Azul claro */
+}
+
+#form {
+  width: 300px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+#form-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #163149; /* Azul claro */
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btnLogin {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #163149; /* Azul claro */
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #007acc; /* Azul escuro */
+}

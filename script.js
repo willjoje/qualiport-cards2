@@ -63,6 +63,7 @@ function createCards(listArr) {
     // Inicializa visualização com Domínio
     useIpMap[condominio.id] = false;
     createButtons(condominio, card);
+    console.log(condominio.nome)
 
     cardContainer.appendChild(card);
   });
