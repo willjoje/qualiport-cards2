@@ -51,14 +51,46 @@ function createCards(listArr) {
     });
     card.appendChild(toggleButton);
 
-    // Botão "Teste" (placeholder)
+    // Botão "Teste"
     const testButton = document.createElement("button");
     testButton.innerText = "Teste";
     testButton.className = "testButton";
-    testButton.addEventListener("click", function () {
-      alert(`Função de teste futura para: ${condominio.nome}`);
+
+    testButton.addEventListener("click", async function () {
+      testButton.style.boxShadow = ""; // limpa o estilo
+
+      const dominio = condominio.dominio;
+      const natList = condominio.nat;
+
+      let algumOffline = false;
+
+      for (const dispositivo of natList) {
+        const porta = dispositivo.Porta;
+
+        try {
+          const res = await fetch(`http://localhost:3001/ping?dominio=${dominio}&porta=${porta}`);
+          const data = await res.json();
+
+          if (!data.online) {
+            algumOffline = true;
+            break; // pode parar no primeiro offline
+          }
+        } catch (error) {
+          console.error(`Erro ao testar ${dominio}:${porta}`, error);
+          algumOffline = true;
+          break;
+        }
+      }
+
+      if (algumOffline) {
+        testButton.style.boxShadow = "0 0 15px red";
+      } else {
+        testButton.style.boxShadow = "0 0 15px limegreen";
+      }
     });
+
     card.appendChild(testButton);
+
 
     // Inicializa visualização com Domínio
     useIpMap[condominio.id] = false;
