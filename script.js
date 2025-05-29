@@ -57,37 +57,50 @@ function createCards(listArr) {
     testButton.className = "testButton";
 
     testButton.addEventListener("click", async function () {
-      testButton.style.boxShadow = ""; // limpa o estilo
-
       const dominio = condominio.dominio;
-      const natList = condominio.nat;
 
-      let algumOffline = false;
+      const portaBotaoMap = {};
+      const portas = [];
 
-      for (const dispositivo of natList) {
-        const porta = dispositivo.Porta;
-
-        try {
-          const res = await fetch(`http://localhost:3001/ping?dominio=${dominio}&porta=${porta}`);
-          const data = await res.json();
-
-          if (!data.online) {
-            algumOffline = true;
-            break; // pode parar no primeiro offline
+      Array.from(card.children).forEach((el) => {
+        if (el.classList.contains("button")) {
+          const label = el.innerText;
+          const match = label.match(/- (\d+)/);
+          if (match) {
+            const porta = match[1];
+            portas.push(porta);
+            portaBotaoMap[porta] = el;
           }
-        } catch (error) {
-          console.error(`Erro ao testar ${dominio}:${porta}`, error);
-          algumOffline = true;
-          break;
         }
-      }
+      });
 
-      if (algumOffline) {
-        testButton.style.boxShadow = "0 0 15px red";
-      } else {
-        testButton.style.boxShadow = "0 0 15px limegreen";
+      if (portas.length === 0) return;
+
+      try {
+        const res = await fetch(`https://ping-api-fqks.onrender.com/ping
+?dominio=${dominio}&portas=${portas.join(',')}`);
+        const data = await res.json();
+
+        Object.entries(data.results).forEach(([porta, status]) => {
+          const botao = portaBotaoMap[porta];
+          if (!botao) return;
+
+          if (!status) {
+            botao.classList.add('borda-vermelha-piscando');
+          } else {
+            botao.classList.remove('borda-vermelha-piscando');
+            botao.style.backgroundColor = '';
+            botao.style.color = '';
+            botao.style.boxShadow = '';
+          }
+        });
+      } catch (err) {
+        console.error("Erro ao testar dispositivos:", err);
       }
     });
+
+    card.appendChild(testButton);
+
 
     card.appendChild(testButton);
 
@@ -95,8 +108,6 @@ function createCards(listArr) {
     // Inicializa visualização com Domínio
     useIpMap[condominio.id] = false;
     createButtons(condominio, card);
-    console.log(condominio.nome)
-
     cardContainer.appendChild(card);
   });
 }

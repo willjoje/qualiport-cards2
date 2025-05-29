@@ -372,4 +372,14 @@ h1 {
 	bottom: 50px;
   }
   
-  
+  @keyframes piscarBorda {
+  0% { box-shadow: 0 0 0px red; }
+  50% { box-shadow: 0 0 15px red; }
+  100% { box-shadow: 0 0 0px red; }
+}
+
+.borda-vermelha-piscando {
+  animation: piscarBorda 1s infinite;
+  background-color: red !important;
+  color: white;
+}
