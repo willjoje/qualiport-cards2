@@ -178,7 +178,7 @@ function createButtons(condominio, card) {
     botao.style.backgroundColor = useIp ? "#c77dd9" : "#4caf50";
 
     const url = useIp
-      ? `http://${dispositivo.IP}`
+      ? `http://${dispositivo.IP}:${dispositivo.Porta}`
       : `http://${condominio.dominio}:${dispositivo.Porta}`;
 
     botao.addEventListener("click", function (event) {
