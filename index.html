@@ -1,48 +1,93 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Qualiport Cads</title>
+    <title>Qualiport Cards - Login</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <style>
-        @import url(https://db.onlinewebfonts.com/c/2a4248e0df56c884e56c5ac2191bd034?family=Controller+Ext+W01+Five);
-    </style>
     <link rel="stylesheet" href="./styleLogin.css"/>
 </head>
 
 <body>
     <div id="logo-enclousure">
-        <h1 class="logo">Qualiport </h1>
-        <h1 class="logo logo2">Cards</h1>
+        <h1 class="logo">Qualiport <span class="logo2">Cards</span></h1>
     </div>
 
-    <div id="form">
-        <h1 id="form-logo">Login</h1>
-        <input type="email" id="username" placeholder="Email" required><br><br>
-        <input type="password" id="password" placeholder="Senha" required><br><br>
-        <button id="btnLogin">Entrar</button>
+    <div id="login-container">
+        <h1 id="form-title">Acesso Restrito</h1>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Email" required autocomplete="email">
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Senha" required autocomplete="current-password">
+            </div>
+
+            <p id="error-msg" class="error-msg"></p>
+
+            <button type="submit" id="btnLogin">Entrar</button>
+        </form>
     </div>
 
     <script type="module">
         import { auth } from './firebase.js';
-        import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js';
+        import { signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js';
 
-        document.getElementById("btnLogin").addEventListener("click", async () => {
-        const email = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-        const msg = document.getElementById("msg");
-        console.log(email,password);
+        const loginForm = document.getElementById("loginForm");
+        const errorMsg = document.getElementById("error-msg");
+        const btnLogin = document.getElementById("btnLogin");
 
-        try {   
-            await signInWithEmailAndPassword(auth, email, password);
-            window.location.href = "./home.html";
-        } catch (error) {
-            msg.innerText = "Erro: " + error.message;
-        }
+        // 1. Verifica se já está logado (Redirecionamento Automático)
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                window.location.href = "./home.html";
+            }
+        });
+
+        // 2. Lógica de Login
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault(); // Evita recarregar a página
+            
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Feedback visual: Carregando
+            errorMsg.innerText = "";
+            btnLogin.innerText = "Verificando...";
+            btnLogin.disabled = true;
+            btnLogin.style.backgroundColor = "#ccc";
+
+            try {   
+                await signInWithEmailAndPassword(auth, email, password);
+                // O redirecionamento acontece no onAuthStateChanged acima
+            } catch (error) {
+                console.error(error.code);
+                let mensagem = "Erro ao fazer login.";
+
+                switch(error.code) {
+                    case 'auth/invalid-email':
+                        mensagem = "Email inválido.";
+                        break;
+                    case 'auth/user-not-found':
+                    case 'auth/wrong-password':
+                    case 'auth/invalid-credential':
+                        mensagem = "Email ou senha incorretos.";
+                        break;
+                    case 'auth/too-many-requests':
+                        mensagem = "Muitas tentativas. Tente mais tarde.";
+                        break;
+                }
+                
+                errorMsg.innerText = mensagem;
+                
+                // Restaura o botão
+                btnLogin.innerText = "Entrar";
+                btnLogin.disabled = false;
+                btnLogin.style.backgroundColor = "#163149";
+            }
         });
     </script>
 </body>
-
 </html>

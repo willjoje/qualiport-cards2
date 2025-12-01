@@ -7,36 +7,108 @@
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
-<div id="toast">Copiado!</div>
-
 <body>
-  
 
-  <!-- Conteúdo principal -->
+  <div id="toast">Copiado!</div>
+
   <div class="main-content-wrapper" id="main-content-wrapper">
+    
     <div class="header">
+      <button onclick="logout()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: #163149; cursor: pointer; font-weight: bold;">Sair</button>
+
       <img id="logo" src="https://www.qualiport.com.br/imagens-qualiport/qualiport-branco.png" alt="Logo Qualiport" />
+      
       <div id="search-block">
-        <button id="adder" class="adder">+</button>
-        <input type="text" class="search-bar" id="search-bar" placeholder="Nome do condomínio" />
-        <button id="eraser" class="eraser">X</button>
+        <button id="adder" class="adder" title="Adicionar Novo Condomínio">+</button>
+        
+        <input type="text" class="search-bar" id="search-bar" placeholder="Nome do condomínio, IP ou porta..." />
+        
+        <button id="eraser" class="eraser" title="Limpar busca">X</button>
       </div>
     </div>
 
-    <!-- Área de exibição dos cards -->
     <div class="main-content">
       <div class="card-container" id="card-container"></div>
     </div>
   </div>
 
-  <!-- Modal (futura implementação) -->
-  <dialog class="modal">
+  <div id="deviceModal" class="modal-overlay">
     <div class="modal-box">
-      <p class="modal-content"></p>
+      <h2 id="modalTitle">Gerenciar Dispositivo</h2>
+      <form id="deviceForm">
+        <input type="hidden" id="condominioId">
+        <input type="hidden" id="oldDeviceName"> 
+        
+        <div class="input-group">
+          <label>Nome do Dispositivo</label>
+          <input type="text" id="devName" placeholder="Ex: DVR Portaria" required>
+        </div>
+        
+        <div class="input-group">
+          <label>IP Interno</label>
+          <input type="text" id="devIp" placeholder="Ex: 192.168.1.50" required>
+        </div>
+        
+        <div class="input-group">
+          <label>Porta</label>
+          <input type="number" id="devPort" placeholder="Ex: 8080" required>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="btnDelete" class="btn-delete hidden" title="Excluir dispositivo">Excluir</button>
+          
+          <button type="button" class="btn-cancel" onclick="closeDeviceModal()">Cancelar</button>
+          <button type="submit" class="btn-save">Salvar</button>
+        </div>
+      </form>
     </div>
-  </dialog>
+  </div>
+
+  <div id="condoModal" class="modal-overlay">
+    <div class="modal-box">
+      <h2>Novo Condomínio</h2>
+      <form id="condoForm">
+        
+        <div class="input-group">
+          <label>Nome do Condomínio</label>
+          <input type="text" id="newCondoName" placeholder="Ex: Edifício Solar" required>
+        </div>
+        
+        <div class="input-group">
+          <label>Domínio / DynDNS</label>
+          <input type="text" id="newCondoDomain" placeholder="Ex: cond-solar.dyndns.org" required>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" onclick="closeCondoModal()">Cancelar</button>
+          <button type="submit" class="btn-save">Criar Condomínio</button>
+        </div>
+      </form>
+    </div>
+  </div>
   
-  <!-- Script principal -->
+  <script type="module">
+    import { auth } from './firebase.js';
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+    // Se não houver usuário logado, redireciona para o login
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+            window.location.href = "./index.html";
+        }
+    });
+
+    // Função global de Logout
+    window.logout = async function() {
+        try {
+            await signOut(auth);
+            window.location.href = "./index.html";
+        } catch (error) {
+            console.error("Erro ao sair", error);
+        }
+    }
+  </script>
+
   <script type="module" src="script.js"></script>
 </body>
 </html>
