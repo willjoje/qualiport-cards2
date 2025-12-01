@@ -66,6 +66,8 @@
   /* Cores específicas de elementos que mantêm identidade */
   --eraser-bg: #ffcccc;
   --adder-bg: #8595be;
+  
+  --export-bg: #e0e0e0;
 }
 
 body.dark-mode {
@@ -84,6 +86,8 @@ body.dark-mode {
   
   --eraser-bg: #8c2f2f;
   --adder-bg: #3b4d6e;
+  
+  --export-bg: #2a3b2d;
 }
 
 body {
@@ -156,6 +160,13 @@ h1, h2, h3, label {
     }
     .search-bar {
         width: 60vw !important;
+    }
+    .export-buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .export-btn {
+        width: 100%;
     }
 }
 
@@ -530,4 +541,62 @@ body.dark-mode .modal-box input {
     margin-bottom: 5px;
     font-weight: bold;
     text-align: left;
+}
+
+/* --- Área de Exportação --- */
+.export-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 90%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    background-color: var(--export-bg);
+    border-radius: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.export-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.export-buttons-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.export-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #607d8b; /* Blue Grey - cor neutra e profissional */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.export-btn:hover {
+    background-color: #455a64;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.export-btn:active {
+    transform: translateY(1px);
 }

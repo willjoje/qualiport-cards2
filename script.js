@@ -384,6 +384,100 @@ if(condoForm) {
     });
 }
 
+/* ============================================================
+   FUNÇÕES DE EXPORTAÇÃO
+   ============================================================ */
+
+function downloadFile(content, filename, mimeType) {
+    const a = document.createElement('a');
+    // Adiciona o BOM (\uFEFF) para garantir que o Excel abra UTF-8 corretamente
+    const blob = new Blob(mimeType.includes('csv') ? ['\uFEFF' + content] : [content], {type: mimeType});
+    const url = URL.createObjectURL(blob);
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }, 0);
+}
+
+// 1. Exportar Lista de Nomes (.txt)
+document.getElementById('btnExportNames')?.addEventListener('click', () => {
+    if (!listArr || listArr.length === 0) {
+        showToast("Sem dados para exportar.");
+        return;
+    }
+    const names = listArr.map(c => c.nome).join('\n');
+    downloadFile(names, 'lista_condominios_nomes.txt', 'text/plain');
+});
+
+// 2. Exportar Lista de Domínios (.txt)
+document.getElementById('btnExportDomains')?.addEventListener('click', () => {
+    if (!listArr || listArr.length === 0) {
+        showToast("Sem dados para exportar.");
+        return;
+    }
+    const domains = listArr.map(c => c.dominio).join('\n');
+    downloadFile(domains, 'lista_condominios_dominios.txt', 'text/plain');
+});
+
+// 3. Exportar Banco de Dados Completo (.json)
+document.getElementById('btnExportDB')?.addEventListener('click', () => {
+    if (!listArr || listArr.length === 0) {
+        showToast("Sem dados para exportar.");
+        return;
+    }
+    const json = JSON.stringify(listArr, null, 4); 
+    downloadFile(json, 'backup_banco_de_dados.json', 'application/json');
+});
+
+// 4. Exportar Tabela CSV (.csv)
+document.getElementById('btnExportCSV')?.addEventListener('click', () => {
+    if (!listArr || listArr.length === 0) {
+        showToast("Sem dados para exportar.");
+        return;
+    }
+
+    // Cabeçalhos do CSV
+    // Usamos vírgula como separador padrão de CSV.
+    // Strings são colocadas entre aspas "" para evitar problemas com vírgulas no nome.
+    const headers = ["ID", "Condomínio", "Domínio", "Nome Dispositivo", "IP Interno", "Porta Externa"];
+    let csvContent = headers.join(",") + "\n";
+
+    listArr.forEach(cond => {
+        // Se o condomínio tem dispositivos, cria uma linha para cada um
+        if (cond.nat && cond.nat.length > 0) {
+            cond.nat.forEach(dev => {
+                let row = [
+                    `"${cond.id}"`,
+                    `"${cond.nome}"`,
+                    `"${cond.dominio}"`,
+                    `"${dev.Nome}"`,
+                    `"${dev.IP}"`,
+                    `"${dev.Porta}"`
+                ];
+                csvContent += row.join(",") + "\n";
+            });
+        } else {
+            // Se não tem dispositivos, cria uma linha só com os dados do condomínio
+            let row = [
+                `"${cond.id}"`,
+                `"${cond.nome}"`,
+                `"${cond.dominio}"`,
+                "-",
+                "-",
+                "-"
+            ];
+            csvContent += row.join(",") + "\n";
+        }
+    });
+
+    downloadFile(csvContent, 'relatorio_dispositivos.csv', 'text/csv;charset=utf-8;');
+});
+
+
 // --- Helpers ---
 
 async function updateFirebase(condId, dataObj) {
