@@ -5,6 +5,22 @@ import { db } from "./firebase.js";
 let listArr = []; 
 let useIpMap = {}; 
 
+// --- Lógica do Dark Mode ---
+const themeToggleBtn = document.getElementById('theme-toggle');
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        // Salvar preferência
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
+// Carregamento inicial do tema já é feito no head do HTML para evitar delay
+
 // --- Carregamento ---
 async function loadData() {
   try {
@@ -147,7 +163,7 @@ function renderDeviceButtons(condominio, card, container) {
     const color = useIp ? "#c77dd9" : "#4caf50";
     
     // ============================================================
-    // NOVA LÓGICA DE URL (IP vs DOMÍNIO com Regra de DVR/NVR)
+    // LÓGICA DE URL (IP vs DOMÍNIO com Regra de DVR/NVR)
     // ============================================================
     let url;
     if (useIp) {
@@ -164,7 +180,6 @@ function renderDeviceButtons(condominio, card, container) {
         // Sempre usa a porta (NAT)
         url = `http://${condominio.dominio}:${dev.Porta}`;
     }
-    // ============================================================
 
     const label = `${dev.Nome} - ${dev.Porta}`;
 

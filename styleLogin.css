@@ -1,15 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Variáveis para facilitar */
+:root {
+  --login-bg: #163149;
+  --login-form-bg: #ffffff;
+  --login-text: #333;
+  --input-border: #ddd;
+}
+
+/* Suporte se a classe dark-mode for injetada aqui também */
+body.dark-mode {
+    --login-bg: #121212;
+    --login-form-bg: #1e1e1e;
+    --login-text: #ffffff;
+    --input-border: #444;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #163149; /* Azul Qualiport */
+  background-color: var(--login-bg); 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  transition: background-color 0.3s;
 }
 
 #logo-enclousure {
@@ -31,17 +48,18 @@ body {
 #login-container {
   width: 90%;
   max-width: 350px;
-  background-color: #fff;
+  background-color: var(--login-form-bg);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s;
 }
 
 #form-title {
   text-align: center;
   margin-top: 0;
   margin-bottom: 25px;
-  color: #333;
+  color: var(--login-text);
   font-size: 24px;
 }
 
@@ -53,11 +71,18 @@ input[type="email"],
 input[type="password"] {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-border);
   border-radius: 6px;
-  box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+  box-sizing: border-box; 
   font-size: 16px;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+
+/* Ajuste inputs no dark mode */
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"] {
+    background-color: #2c2c2c;
+    color: white;
 }
 
 input:focus {
@@ -88,5 +113,5 @@ input:focus {
   text-align: center;
   font-size: 14px;
   margin: 10px 0;
-  min-height: 18px; /* Evita pulo de layout */
+  min-height: 18px; 
 }

@@ -6,6 +6,14 @@
     <title>Qualiport Cards - Login</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="./styleLogin.css"/>
+    <script>
+        (function() {
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+          }
+        })();
+    </script>
 </head>
 
 <body>

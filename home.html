@@ -5,6 +5,14 @@
   <title>Qualiport Cards</title>
   <link rel="icon" href="https://qualiport.com.br/imagens-qualiport/144.png" type="image/png" />
   <link rel="stylesheet" type="text/css" href="style.css" />
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    })();
+  </script>
 </head>
 
 <body>
@@ -14,7 +22,9 @@
   <div class="main-content-wrapper" id="main-content-wrapper">
     
     <div class="header">
-      <button onclick="logout()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: #163149; cursor: pointer; font-weight: bold;">Sair</button>
+      <button id="theme-toggle" title="Alternar Tema Escuro/Claro">🌗</button>
+
+      <button onclick="logout()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: var(--text-header); cursor: pointer; font-weight: bold;">Sair</button>
 
       <img id="logo" src="https://www.qualiport.com.br/imagens-qualiport/qualiport-branco.png" alt="Logo Qualiport" />
       
