@@ -33,6 +33,11 @@ async function loadData() {
     });
 
     createCards(listArr);
+    
+    // Reaplica o filtro de busca existente para manter o usuário no card certo
+    // Isso resolve o bug do site "reiniciar" a visualização ao editar
+    applyFilter(); 
+
   } catch (error) {
     console.error("Erro ao carregar dados:", error);
     showToast("Erro ao carregar dados.");
@@ -412,7 +417,7 @@ if(linkForm) {
             newLink.color = "#ff9800"; // Laranja Obrigatório
             newLink.mobileNum = document.getElementById('linkMobileNum').value;
             newLink.gb = document.getElementById('linkMobileGB').value;
-            // Limpa campos irrelevantes para manter o banco limpo
+            // Limpa campos irrelevantes
         } else {
             // SALVANDO FIXO
             const selectedColor = document.querySelector('input[name="linkColorOption"]:checked').value;
@@ -583,6 +588,7 @@ if(adderBtn) {
     adderBtn.addEventListener('click', window.openCondoModal);
 }
 
+// Salvar Novo Condomínio
 const condoForm = document.getElementById('condoForm');
 if(condoForm) {
     condoForm.addEventListener('submit', async function(e) {
@@ -597,28 +603,28 @@ if(condoForm) {
         }
 
         try {
-            // --- LÓGICA DE ID SEQUENCIAL ---
+            // --- LÓGICA DE ID SEQUENCIAL (NOVA) ---
             let maxId = 0;
 
             // Varre a lista atual para achar o maior número
             listArr.forEach(item => {
-                // Tenta converter o ID para número (ignora IDs não numéricos como o aleatório que você criou)
                 const currentId = parseInt(item.id);
+                // Ignora IDs que não sejam números (ex: o bugado JHe...)
                 if (!isNaN(currentId) && currentId > maxId) {
                     maxId = currentId;
                 }
             });
 
-            // O próximo ID será o maior encontrado + 1
+            // O próximo ID será o maior + 1
             const nextId = (maxId + 1).toString();
-            // --------------------------------
+            // ----------------------------------------
 
-            // Usa setDoc para definir o ID manualmente (nextId)
+            // Usa setDoc para definir o ID manualmente
             await setDoc(doc(db, "condominios", nextId), {
                 nome: nome,
                 dominio: dominio,
                 nat: [],
-                links: [null, null] 
+                links: [null, null] // Inicializa com slots de link vazios
             });
 
             showToast(`Condomínio criado! ID: ${nextId}`);
@@ -746,12 +752,16 @@ function showToast(message) {
   }
 }
 
-document.getElementById('search-bar').addEventListener("input", function() {
-  const input = this.value.toLowerCase();
+// --- Função de Filtro (Separada para ser reutilizada) ---
+function applyFilter() {
+  const input = document.getElementById('search-bar').value.toLowerCase();
   const cards = document.getElementsByClassName('card');
 
   Array.from(cards).forEach((card) => {
+    // Busca no nome do condomínio
     const name = card.getElementsByTagName('p')[0].textContent.toLowerCase();
+    
+    // Busca nos textos dos botões
     const buttonsText = Array.from(card.getElementsByTagName('button'))
                              .map(b => b.textContent.toLowerCase())
                              .join(' ');
@@ -762,7 +772,10 @@ document.getElementById('search-bar').addEventListener("input", function() {
       card.style.display = 'none';
     }
   });
-});
+}
+
+// Evento de Digitação (Chama a função acima)
+document.getElementById('search-bar').addEventListener("input", applyFilter);
 
 document.getElementById('eraser').addEventListener("click", function () {
   const input = document.getElementById('search-bar');
