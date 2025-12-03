@@ -41,7 +41,6 @@
       <div class="card-container" id="card-container"></div>
     </div>
 
-    <!-- Área de Exportação -->
     <div class="export-section">
         <h3>Exportar Dados</h3>
         <div class="export-buttons-container">
@@ -104,6 +103,105 @@
         <div class="modal-actions">
           <button type="button" class="btn-cancel" onclick="closeCondoModal()">Cancelar</button>
           <button type="submit" class="btn-save">Criar Condomínio</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="linkTypeModal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 350px; text-align: center;">
+      <h2>Adicionar Link</h2>
+      <p style="margin-bottom: 20px;">Qual o tipo de conexão?</p>
+      
+      <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px;">
+          <button onclick="selectLinkType('fixed')" class="type-select-btn" style="background: #2196F3;">
+            🌐<br>Internet Fixa
+          </button>
+          <button onclick="selectLinkType('mobile')" class="type-select-btn" style="background: #ff9800;">
+            📶<br>Modem 4G
+          </button>
+      </div>
+
+      <button type="button" class="btn-cancel" onclick="closeTypeModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <div id="linkModal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 400px;">
+      <h2 id="linkModalTitle">Link de Internet</h2>
+      <form id="linkForm">
+        <input type="hidden" id="linkCondoId">
+        <input type="hidden" id="linkIndex"> 
+        <input type="hidden" id="linkType"> <div class="input-group">
+            <label id="labelProvider">Operadora</label>
+            <input type="text" id="linkProvider" placeholder="Ex: Vivo, Claro" required>
+        </div>
+
+        <div id="fields-fixed">
+            <div class="input-group">
+                <label>Cor do Botão</label>
+                <div class="color-options-container">
+                    <input type="radio" name="linkColorOption" id="color-blue" value="#2196F3" checked>
+                    <label for="color-blue" class="color-circle" style="background-color: #2196F3;" title="Azul"></label>
+
+                    <input type="radio" name="linkColorOption" id="color-purple" value="#9c27b0">
+                    <label for="color-purple" class="color-circle" style="background-color: #9c27b0;" title="Roxo"></label>
+
+                    <input type="radio" name="linkColorOption" id="color-red" value="#f44336">
+                    <label for="color-red" class="color-circle" style="background-color: #f44336;" title="Vermelho"></label>
+
+                    <input type="radio" name="linkColorOption" id="color-gray" value="#607d8b">
+                    <label for="color-gray" class="color-circle" style="background-color: #607d8b;" title="Cinza"></label>
+
+                    <input type="radio" name="linkColorOption" id="color-pink" value="#e91e63">
+                    <label for="color-pink" class="color-circle" style="background-color: #e91e63;" title="Rosa"></label>
+                </div>
+            </div>
+            
+            <div class="input-group">
+              <label>Nº Contrato</label>
+              <div class="copy-wrapper">
+                  <input type="text" id="linkContract" placeholder="Número do contrato">
+                  <button type="button" class="btn-copy" onclick="copyField('linkContract')">📋</button>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>CNPJ Titular</label>
+              <div class="copy-wrapper">
+                  <input type="text" id="linkCnpj" placeholder="00.000.000/0001-00">
+                  <button type="button" class="btn-copy" onclick="copyField('linkCnpj')">📋</button>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Senha de Acesso</label>
+              <div class="copy-wrapper">
+                  <input type="text" id="linkPass" placeholder="Senha do portal/modem">
+                  <button type="button" class="btn-copy" onclick="copyField('linkPass')">📋</button>
+              </div>
+            </div>
+        </div>
+
+        <div id="fields-mobile" class="hidden">
+             <div class="input-group">
+                <label>Número do Chip/Modem</label>
+                <div class="copy-wrapper">
+                    <input type="text" id="linkMobileNum" placeholder="(XX) 9XXXX-XXXX">
+                    <button type="button" class="btn-copy" onclick="copyField('linkMobileNum')">📋</button>
+                </div>
+             </div>
+
+             <div class="input-group">
+                <label>Quantidade de GB</label>
+                <input type="text" id="linkMobileGB" placeholder="Ex: 50GB">
+             </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="btnDeleteLink" class="btn-delete hidden" title="Remover Link">Remover</button>
+          <button type="button" class="btn-cancel" onclick="closeLinkModal()">Cancelar</button>
+          <button type="submit" class="btn-save">Salvar</button>
         </div>
       </form>
     </div>

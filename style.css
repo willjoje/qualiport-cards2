@@ -354,6 +354,9 @@ body.dark-mode #logo {
     color: var(--text-main);
 	border-radius: 1.5rem;
 	box-shadow: 0 10px 25px var(--card-shadow);
+  padding: 30px;  /* Cria o espaço interno */
+  box-sizing: border-box; 
+  width: 90%;
 }
 /* Inputs dentro do Modal */
 .modal-box input {
@@ -599,4 +602,160 @@ body.dark-mode .modal-box input {
 
 .export-btn:active {
     transform: translateY(1px);
+}
+
+/* --- Estilos para os Botões de Link no Cabeçalho do Card --- */
+
+/* Novo layout do cabeçalho do card */
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 0;
+  text-align: left;
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+/* Container dos dois botões de link */
+.links-badges-container {
+  display: flex;
+  gap: 5px;
+  margin-right: 10px;
+}
+
+/* O botão do link em si (Badge) */
+.link-badge {
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: transform 0.2s, filter 0.2s;
+  min-width: 30px; /* Garante tamanho para o botão "+" */
+  text-align: center;
+}
+
+.link-badge:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Estilo para botão vazio (Adicionar) */
+.link-badge.empty {
+  background-color: #ccc;
+  color: #555;
+  box-shadow: none;
+  border: 1px dashed #999;
+}
+body.dark-mode .link-badge.empty {
+  background-color: #333;
+  color: #aaa;
+  border: 1px dashed #555;
+}
+
+/* --- Estilos para Inputs com Botão Copiar (Dentro do Modal) --- */
+.copy-wrapper {
+  display: flex;
+  gap: 5px;
+}
+
+.copy-wrapper input {
+  flex-grow: 1;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.btn-copy {
+  background-color: #607d8b;
+  color: white;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.btn-copy:hover {
+  background-color: #455a64;
+}
+
+/* Ajuste no modal box para inputs de cor */
+input[type="color"] {
+  border: none;
+  background: none;
+}
+
+/* --- Seletor de Cores (Bolinhas) --- */
+.color-options-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+    align-items: center;
+}
+
+/* Esconde a bolinha padrão do rádio */
+input[name="linkColorOption"] {
+    display: none;
+}
+
+/* Estilo das bolinhas de cor */
+.color-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+    display: inline-block;
+}
+
+.color-circle:hover {
+    transform: scale(1.1);
+}
+
+/* Estado Selecionado (Radio Checked) */
+input[name="linkColorOption"]:checked + .color-circle {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 3px white, 0 0 0 5px #333; /* Anel duplo para destaque */
+}
+
+/* Ajuste do anel de seleção no Dark Mode */
+body.dark-mode input[name="linkColorOption"]:checked + .color-circle {
+    box-shadow: 0 0 0 3px #1e1e1e, 0 0 0 5px #fff;
+}
+
+/* Botões de Seleção de Tipo (Fixo ou 4G) */
+.type-select-btn {
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+    width: 120px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    line-height: 1.4;
+}
+
+.type-select-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }

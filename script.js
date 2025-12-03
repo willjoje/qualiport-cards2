@@ -19,7 +19,6 @@ if (themeToggleBtn) {
         }
     });
 }
-// Carregamento inicial do tema já é feito no head do HTML para evitar delay
 
 // --- Carregamento ---
 async function loadData() {
@@ -56,10 +55,56 @@ function createCards(lista) {
     card.style.flexDirection = "column";
     card.style.alignItems = "center";
 
+    // --- CABEÇALHO DO CARD (Links de Internet) ---
+    const headerRow = document.createElement("div");
+    headerRow.className = "card-header-row";
+
+    // Nome do Condomínio (Alinhado à esquerda)
     const nomeCondominio = document.createElement("p");
     nomeCondominio.innerText = condominio.nome;
-    nomeCondominio.className = "nome";
-    card.appendChild(nomeCondominio);
+    nomeCondominio.className = "card-title";
+    headerRow.appendChild(nomeCondominio);
+
+    // Container dos Botões de Link (Direita)
+    const linksContainer = document.createElement("div");
+    linksContainer.className = "links-badges-container";
+
+    // Garante que o array de links tenha 2 posições ou cria
+    const links = condominio.links || [null, null]; 
+    // Segurança extra caso o array exista mas tenha tamanho errado
+    while(links.length < 2) links.push(null);
+
+    // Renderiza os dois slots (0 e 1)
+    links.slice(0, 2).forEach((linkData, index) => {
+        const linkBtn = document.createElement("button");
+        linkBtn.className = "link-badge";
+        
+        if (linkData) {
+            // Se existe link configurado
+            // Exibe 5 letras como solicitado
+            linkBtn.innerText = linkData.provider ? linkData.provider.substring(0, 5) : "Link"; 
+            linkBtn.style.backgroundColor = linkData.color;
+            linkBtn.title = `Operadora: ${linkData.provider}`;
+            linkBtn.onclick = (e) => {
+                e.stopPropagation(); // Evita conflitos de clique
+                openLinkModal(condominio.id, index, linkData);
+            };
+        } else {
+            // Se não existe (Botão Adicionar Vazio)
+            linkBtn.innerText = "+";
+            linkBtn.className += " empty";
+            linkBtn.title = "Adicionar Link de Internet";
+            linkBtn.onclick = (e) => {
+                e.stopPropagation();
+                openLinkModal(condominio.id, index, null);
+            };
+        }
+        linksContainer.appendChild(linkBtn);
+    });
+
+    headerRow.appendChild(linksContainer);
+    card.appendChild(headerRow);
+    // -------------------------------------------
 
     if (useIpMap[condominio.id] === undefined) {
       useIpMap[condominio.id] = false;
@@ -103,7 +148,7 @@ function createCards(lista) {
   });
 }
 
-// --- Renderização de Botões ---
+// --- Renderização de Botões de Dispositivos ---
 function renderDeviceButtons(condominio, card, container) {
   container.innerHTML = "";
   const useIp = useIpMap[condominio.id];
@@ -162,27 +207,18 @@ function renderDeviceButtons(condominio, card, container) {
 
     const color = useIp ? "#c77dd9" : "#4caf50";
     
-    // ============================================================
-    // LÓGICA DE URL (IP vs DOMÍNIO com Regra de DVR/NVR)
-    // ============================================================
     let url;
     if (useIp) {
-        // Se estiver usando IP Interno:
-        // Adiciona a porta APENAS se for DVR ou NVR
         if (nome.includes("DVR") || nome.includes("NVR")) {
             url = `http://${dev.IP}:${dev.Porta}`;
         } else {
-            // Para outros (câmeras, etc), usa apenas o IP (porta padrão 80)
             url = `http://${dev.IP}`;
         }
     } else {
-        // Se estiver usando Domínio Externo:
-        // Sempre usa a porta (NAT)
         url = `http://${condominio.dominio}:${dev.Porta}`;
     }
 
     const label = `${dev.Nome} - ${dev.Porta}`;
-
     container.appendChild(createWrapper(label, url, dev, color));
   });
 }
@@ -239,10 +275,204 @@ async function runPingTest(condominio, devicesContainer) {
 }
 
 /* ============================================================
-   LÓGICA DOS MODAIS (Dispositivos e Condomínios)
+   LÓGICA DOS MODAIS (Links, Dispositivos e Condomínios)
    ============================================================ */
 
-// 1. Modal de DISPOSITIVOS (Adicionar/Editar dentro do card)
+// --- FUNÇÃO AUXILIAR DE CÓPIA ---
+window.copyField = function(elementId) {
+    const input = document.getElementById(elementId);
+    if(input && input.value) {
+        navigator.clipboard.writeText(input.value);
+        showToast("Copiado!");
+    } else {
+        showToast("Campo vazio.");
+    }
+}
+
+// --- 1. MODAL DE LINKS DE INTERNET (FIXO / 4G) ---
+
+// Início: Chamado pelo botão no Card
+window.openLinkModal = function(condId, index, linkData) {
+    // Se já existe dados (Edição), pulamos a seleção e abrimos direto
+    if (linkData) {
+        // Detecta o tipo baseado nos dados (se tiver 'mobileNum', é 4G)
+        const type = linkData.type || (linkData.mobileNum ? 'mobile' : 'fixed');
+        configureAndOpenMainModal(condId, index, type, linkData);
+    } else {
+        // Se é novo, abre a seleção de tipo
+        document.getElementById('linkCondoId').value = condId;
+        document.getElementById('linkIndex').value = index;
+        document.getElementById('linkTypeModal').classList.add('open');
+    }
+}
+
+// Fechar Seleção
+window.closeTypeModal = function() {
+    document.getElementById('linkTypeModal').classList.remove('open');
+}
+
+// Usuário escolheu o tipo (Fixo ou 4G)
+window.selectLinkType = function(type) {
+    const condId = document.getElementById('linkCondoId').value;
+    const index = document.getElementById('linkIndex').value;
+    
+    closeTypeModal();
+    // Abre o modal principal vazio configurado para o tipo escolhido
+    configureAndOpenMainModal(condId, index, type, null);
+}
+
+// Configura e Mostra o Modal Principal
+function configureAndOpenMainModal(condId, index, type, data) {
+    const modal = document.getElementById('linkModal');
+    const title = document.getElementById('linkModalTitle');
+    const btnDelete = document.getElementById('btnDeleteLink');
+    
+    // Set Hidden Fields
+    document.getElementById('linkCondoId').value = condId;
+    document.getElementById('linkIndex').value = index;
+    document.getElementById('linkType').value = type;
+
+    // Elementos de UI
+    const fieldsFixed = document.getElementById('fields-fixed');
+    const fieldsMobile = document.getElementById('fields-mobile');
+    const labelProvider = document.getElementById('labelProvider');
+
+    // Resetar campos
+    document.getElementById('linkProvider').value = '';
+    // Fixed fields
+    document.getElementById('color-blue').checked = true;
+    document.getElementById('linkContract').value = '';
+    document.getElementById('linkCnpj').value = '';
+    document.getElementById('linkPass').value = '';
+    // Mobile fields
+    document.getElementById('linkMobileNum').value = '';
+    document.getElementById('linkMobileGB').value = '';
+
+    // CONFIGURAÇÃO VISUAL (FIXO vs 4G)
+    if (type === 'mobile') {
+        // Modo 4G
+        title.innerText = data ? "Editar 4G" : "Novo Modem 4G";
+        labelProvider.innerText = "Operadora"; 
+        fieldsFixed.classList.add('hidden');
+        fieldsMobile.classList.remove('hidden');
+    } else {
+        // Modo Internet Fixa
+        title.innerText = data ? "Editar Link Fixo" : "Novo Link Fixo";
+        labelProvider.innerText = "Operadora";
+        fieldsFixed.classList.remove('hidden');
+        fieldsMobile.classList.add('hidden');
+    }
+
+    // PREENCHER DADOS SE FOR EDIÇÃO
+    if (data) {
+        document.getElementById('linkProvider').value = data.provider;
+        
+        if (type === 'mobile') {
+            document.getElementById('linkMobileNum').value = data.mobileNum || '';
+            document.getElementById('linkMobileGB').value = data.gb || '';
+        } else {
+            // Cor (Seletor)
+            const colorRadio = document.querySelector(`input[name="linkColorOption"][value="${data.color}"]`);
+            if (colorRadio) colorRadio.checked = true;
+            
+            document.getElementById('linkContract').value = data.contract || '';
+            document.getElementById('linkCnpj').value = data.cnpj || '';
+            document.getElementById('linkPass').value = data.pass || '';
+        }
+        btnDelete.classList.remove('hidden');
+    } else {
+        btnDelete.classList.add('hidden');
+    }
+
+    modal.classList.add('open');
+}
+
+window.closeLinkModal = function() {
+    document.getElementById('linkModal').classList.remove('open');
+}
+
+// Salvar (Lida com os dois tipos)
+const linkForm = document.getElementById('linkForm');
+if(linkForm) {
+    linkForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const condId = document.getElementById('linkCondoId').value;
+        const index = parseInt(document.getElementById('linkIndex').value);
+        const type = document.getElementById('linkType').value;
+        const providerName = document.getElementById('linkProvider').value;
+
+        let newLink = {
+            type: type,
+            provider: providerName
+        };
+
+        if (type === 'mobile') {
+            // SALVANDO 4G
+            newLink.color = "#ff9800"; // Laranja Obrigatório
+            newLink.mobileNum = document.getElementById('linkMobileNum').value;
+            newLink.gb = document.getElementById('linkMobileGB').value;
+            // Limpa campos irrelevantes para manter o banco limpo
+        } else {
+            // SALVANDO FIXO
+            const selectedColor = document.querySelector('input[name="linkColorOption"]:checked').value;
+            newLink.color = selectedColor;
+            newLink.contract = document.getElementById('linkContract').value;
+            newLink.cnpj = document.getElementById('linkCnpj').value;
+            newLink.pass = document.getElementById('linkPass').value;
+        }
+
+        try {
+            const condominioIndex = listArr.findIndex(c => c.id === condId);
+            if (condominioIndex === -1) return;
+
+            // Pega o array atual ou cria um novo
+            let currentLinks = listArr[condominioIndex].links || [null, null];
+            // Garante tamanho 2
+            while(currentLinks.length < 2) currentLinks.push(null);
+            
+            // Atualiza o slot específico
+            currentLinks[index] = newLink;
+
+            await updateFirebase(condId, { links: currentLinks });
+            showToast("Link salvo!");
+            closeLinkModal();
+            loadData();
+        } catch (error) {
+            console.error("Erro ao salvar:", error);
+            showToast("Erro ao salvar.");
+        }
+    });
+}
+
+// Excluir Link
+const btnDeleteLink = document.getElementById('btnDeleteLink');
+if(btnDeleteLink) {
+    btnDeleteLink.addEventListener('click', async function() {
+        if(!confirm("Tem certeza que deseja remover este link?")) return;
+
+        const condId = document.getElementById('linkCondoId').value;
+        const index = parseInt(document.getElementById('linkIndex').value);
+
+        try {
+            const condominioIndex = listArr.findIndex(c => c.id === condId);
+            let currentLinks = listArr[condominioIndex].links || [null, null];
+
+            // Define o slot como null para limpar, mas mantendo a posição
+            currentLinks[index] = null;
+
+            await updateFirebase(condId, { links: currentLinks });
+            showToast("Link removido!");
+            closeLinkModal();
+            loadData();
+        } catch(error) {
+            console.error("Erro ao excluir link:", error);
+            showToast("Erro ao excluir.");
+        }
+    });
+}
+
+// --- 2. MODAL DE DISPOSITIVOS (Adicionar/Editar dentro do card) ---
 window.openDeviceModal = function(condId, device = null) {
   const modal = document.getElementById('deviceModal');
   const title = document.getElementById('modalTitle');
@@ -337,7 +567,7 @@ if(btnDeleteDevice){
 }
 
 
-// 2. Modal de CONDOMÍNIOS (Botão "+" do Header)
+// --- 3. MODAL DE CONDOMÍNIOS (Botão "+" do Header) ---
 window.openCondoModal = function() {
     document.getElementById('newCondoName').value = "";
     document.getElementById('newCondoDomain').value = "";
@@ -371,7 +601,8 @@ if(condoForm) {
             await addDoc(collection(db, "condominios"), {
                 nome: nome,
                 dominio: dominio,
-                nat: [] 
+                nat: [],
+                links: [null, null] // Inicializa com slots de link vazios
             });
 
             showToast("Condomínio criado!");
@@ -440,14 +671,14 @@ document.getElementById('btnExportCSV')?.addEventListener('click', () => {
         return;
     }
 
-    // Cabeçalhos do CSV
-    // Usamos vírgula como separador padrão de CSV.
-    // Strings são colocadas entre aspas "" para evitar problemas com vírgulas no nome.
-    const headers = ["ID", "Condomínio", "Domínio", "Nome Dispositivo", "IP Interno", "Porta Externa"];
+    const headers = ["ID", "Condomínio", "Domínio", "Nome Dispositivo", "IP Interno", "Porta Externa", "Link 1", "Link 2"];
     let csvContent = headers.join(",") + "\n";
 
     listArr.forEach(cond => {
-        // Se o condomínio tem dispositivos, cria uma linha para cada um
+        // Formata string dos links para o CSV
+        const l1 = cond.links && cond.links[0] ? `"${cond.links[0].provider}"` : "-";
+        const l2 = cond.links && cond.links[1] ? `"${cond.links[1].provider}"` : "-";
+
         if (cond.nat && cond.nat.length > 0) {
             cond.nat.forEach(dev => {
                 let row = [
@@ -456,25 +687,28 @@ document.getElementById('btnExportCSV')?.addEventListener('click', () => {
                     `"${cond.dominio}"`,
                     `"${dev.Nome}"`,
                     `"${dev.IP}"`,
-                    `"${dev.Porta}"`
+                    `"${dev.Porta}"`,
+                    l1,
+                    l2
                 ];
                 csvContent += row.join(",") + "\n";
             });
         } else {
-            // Se não tem dispositivos, cria uma linha só com os dados do condomínio
             let row = [
                 `"${cond.id}"`,
                 `"${cond.nome}"`,
                 `"${cond.dominio}"`,
                 "-",
                 "-",
-                "-"
+                "-",
+                l1,
+                l2
             ];
             csvContent += row.join(",") + "\n";
         }
     });
 
-    downloadFile(csvContent, 'relatorio_dispositivos.csv', 'text/csv;charset=utf-8;');
+    downloadFile(csvContent, 'relatorio_geral.csv', 'text/csv;charset=utf-8;');
 });
 
 
