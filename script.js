@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, updateDoc, addDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import { collection, getDocs, doc, updateDoc, addDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import { db } from "./firebase.js";
 
 // --- Variáveis Globais ---
@@ -583,7 +583,6 @@ if(adderBtn) {
     adderBtn.addEventListener('click', window.openCondoModal);
 }
 
-// Salvar Novo Condomínio
 const condoForm = document.getElementById('condoForm');
 if(condoForm) {
     condoForm.addEventListener('submit', async function(e) {
@@ -598,14 +597,31 @@ if(condoForm) {
         }
 
         try {
-            await addDoc(collection(db, "condominios"), {
+            // --- LÓGICA DE ID SEQUENCIAL ---
+            let maxId = 0;
+
+            // Varre a lista atual para achar o maior número
+            listArr.forEach(item => {
+                // Tenta converter o ID para número (ignora IDs não numéricos como o aleatório que você criou)
+                const currentId = parseInt(item.id);
+                if (!isNaN(currentId) && currentId > maxId) {
+                    maxId = currentId;
+                }
+            });
+
+            // O próximo ID será o maior encontrado + 1
+            const nextId = (maxId + 1).toString();
+            // --------------------------------
+
+            // Usa setDoc para definir o ID manualmente (nextId)
+            await setDoc(doc(db, "condominios", nextId), {
                 nome: nome,
                 dominio: dominio,
                 nat: [],
-                links: [null, null] // Inicializa com slots de link vazios
+                links: [null, null] 
             });
 
-            showToast("Condomínio criado!");
+            showToast(`Condomínio criado! ID: ${nextId}`);
             closeCondoModal();
             loadData(); 
         } catch(err) {
