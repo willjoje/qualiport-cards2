@@ -356,7 +356,7 @@ body.dark-mode #logo {
 	box-shadow: 0 10px 25px var(--card-shadow);
   padding: 30px;  /* Cria o espaço interno */
   box-sizing: border-box; 
-  width: 90%;
+  width: 30%;
 }
 /* Inputs dentro do Modal */
 .modal-box input {
