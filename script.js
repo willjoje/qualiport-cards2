@@ -1,6 +1,10 @@
 import { collection, getDocs, doc, updateDoc, addDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import { db } from "./firebase.js";
 
+// --- CONFIGURAÇÃO DA API LOCAL (TÚNEL CLOUDFLARE) ---
+// Link gerado pelo seu túnel:
+const LOCAL_API_URL = "https://charges-practical-deeply-effectively.trycloudflare.com"; 
+
 // --- Variáveis Globais ---
 let listArr = []; 
 let useIpMap = {}; 
@@ -10,8 +14,6 @@ const themeToggleBtn = document.getElementById('theme-toggle');
 if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
-        
-        // Salvar preferência
         if (document.body.classList.contains('dark-mode')) {
             localStorage.setItem('theme', 'dark');
         } else {
@@ -33,9 +35,6 @@ async function loadData() {
     });
 
     createCards(listArr);
-    
-    // Reaplica o filtro de busca existente para manter o usuário no card certo
-    // Isso resolve o bug do site "reiniciar" a visualização ao editar
     applyFilter(); 
 
   } catch (error) {
@@ -49,56 +48,46 @@ function createCards(lista) {
   let cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
 
-  // Ordena por nome
   lista.sort((a, b) => a.nome.localeCompare(b.nome));
 
   lista.forEach((condominio) => {
     let card = document.createElement("div");
     card.className = "card";
-    // Layout Flex Coluna para alinhar elementos
     card.style.display = "flex";
     card.style.flexDirection = "column";
     card.style.alignItems = "center";
 
-    // --- CABEÇALHO DO CARD (Links de Internet) ---
+    // --- CABEÇALHO DO CARD (Links) ---
     const headerRow = document.createElement("div");
     headerRow.className = "card-header-row";
 
-    // Nome do Condomínio (Alinhado à esquerda)
     const nomeCondominio = document.createElement("p");
     nomeCondominio.innerText = condominio.nome;
     nomeCondominio.className = "card-title";
     headerRow.appendChild(nomeCondominio);
 
-    // Container dos Botões de Link (Direita)
     const linksContainer = document.createElement("div");
     linksContainer.className = "links-badges-container";
 
-    // Garante que o array de links tenha 2 posições ou cria
     const links = condominio.links || [null, null]; 
-    // Segurança extra caso o array exista mas tenha tamanho errado
     while(links.length < 2) links.push(null);
 
-    // Renderiza os dois slots (0 e 1)
     links.slice(0, 2).forEach((linkData, index) => {
         const linkBtn = document.createElement("button");
         linkBtn.className = "link-badge";
         
         if (linkData) {
-            // Se existe link configurado
-            // Exibe 5 letras como solicitado
             linkBtn.innerText = linkData.provider ? linkData.provider.substring(0, 5) : "Link"; 
             linkBtn.style.backgroundColor = linkData.color;
             linkBtn.title = `Operadora: ${linkData.provider}`;
             linkBtn.onclick = (e) => {
-                e.stopPropagation(); // Evita conflitos de clique
+                e.stopPropagation();
                 openLinkModal(condominio.id, index, linkData);
             };
         } else {
-            // Se não existe (Botão Adicionar Vazio)
             linkBtn.innerText = "+";
             linkBtn.className += " empty";
-            linkBtn.title = "Adicionar Link de Internet";
+            linkBtn.title = "Adicionar Link";
             linkBtn.onclick = (e) => {
                 e.stopPropagation();
                 openLinkModal(condominio.id, index, null);
@@ -109,7 +98,6 @@ function createCards(lista) {
 
     headerRow.appendChild(linksContainer);
     card.appendChild(headerRow);
-    // -------------------------------------------
 
     if (useIpMap[condominio.id] === undefined) {
       useIpMap[condominio.id] = false;
@@ -118,7 +106,6 @@ function createCards(lista) {
     const devicesContainer = document.createElement("div");
     devicesContainer.className = "devices-container"; 
     
-    // Toggle IP/Domínio
     const toggleButton = document.createElement("button");
     toggleButton.innerText = useIpMap[condominio.id] ? "Usar Domínio" : "Usar IP";
     toggleButton.className = "toggleButton";
@@ -129,7 +116,6 @@ function createCards(lista) {
     });
     card.appendChild(toggleButton);
 
-    // Teste Ping
     const testButton = document.createElement("button");
     testButton.innerText = "Teste";
     testButton.className = "testButton";
@@ -139,7 +125,6 @@ function createCards(lista) {
     card.appendChild(devicesContainer);
     renderDeviceButtons(condominio, card, devicesContainer);
 
-    // Botão Adicionar Dispositivo (+)
     const addBtn = document.createElement("button");
     addBtn.innerText = "+";
     addBtn.className = "add-device-btn";
@@ -153,7 +138,7 @@ function createCards(lista) {
   });
 }
 
-// --- Renderização de Botões de Dispositivos ---
+// --- Renderização de Botões ---
 function renderDeviceButtons(condominio, card, container) {
   container.innerHTML = "";
   const useIp = useIpMap[condominio.id];
@@ -166,7 +151,11 @@ function renderDeviceButtons(condominio, card, container) {
       btn.innerText = label;
       btn.className = "button";
       btn.style.backgroundColor = bgColor;
-      if(originalDevice && originalDevice.Porta) btn.dataset.porta = originalDevice.Porta;
+      
+      if(originalDevice) {
+          if(originalDevice.Porta) btn.dataset.porta = originalDevice.Porta;
+          if(originalDevice.IP) btn.dataset.ip = originalDevice.IP;
+      }
 
       btn.addEventListener("click", (e) => {
           e.preventDefault();
@@ -188,7 +177,6 @@ function renderDeviceButtons(condominio, card, container) {
       return wrapper;
   };
 
-  // Mikrotik
   if (condominio.nat) {
       const mk = condominio.nat.find(d => d.Nome.toLowerCase().includes("mikrotik"));
       if (mk && !mk.Porta.includes("7890")) {
@@ -200,7 +188,6 @@ function renderDeviceButtons(condominio, card, container) {
 
   if (!condominio.nat) return;
 
-  // Outros Dispositivos
   condominio.nat.forEach((dev) => {
     const nome = dev.Nome.toUpperCase();
     const porta = dev.Porta;
@@ -228,158 +215,210 @@ function renderDeviceButtons(condominio, card, container) {
   });
 }
 
-// --- Ping Test ---
+// --- PING TEST INTELIGENTE (Com busca de IP Mikrotik) ---
 async function runPingTest(condominio, devicesContainer) {
-    const dominio = condominio.dominio;
-    const portaBotaoMap = {};
-    const portas = [];
-
+    const useIp = useIpMap[condominio.id];
     const botoes = devicesContainer.querySelectorAll(".button");
+    const devices = [];
 
     botoes.forEach((btn) => {
         let porta = btn.dataset.porta;
-        if (!porta) {
-            const match = btn.innerText.match(/- (\d+)/);
-            if (match) porta = match[1];
+        let ip = btn.dataset.ip;
+
+        // Fallback
+        if (!ip && porta && condominio.nat) {
+             const found = condominio.nat.find(d => d.Porta === porta);
+             if(found) ip = found.IP;
         }
+
         if (porta) {
-            portas.push(porta);
-            portaBotaoMap[porta] = btn;
+            devices.push({
+                element: btn,
+                ip: ip,
+                porta: porta
+            });
         }
     });
 
-    if (portas.length === 0) {
-        showToast("Nenhum dispositivo testável.");
+    if (devices.length === 0) {
+        showToast("Nenhum dispositivo mapeado.");
         return;
     }
 
-    showToast("Testando conexão...");
+    // --- MODO IP: Usar API Local (UniFi) ---
+    if (useIp) {
+        // 1. Encontra o IP do Controlador/Mikrotik
+        let controllerIp = null;
+        if (condominio.nat) {
+            // Procura qualquer dispositivo que tenha "Mikrotik" no nome
+            const gatewayDev = condominio.nat.find(d => d.Nome && d.Nome.toUpperCase().includes("MIKROTIK"));
+            if (gatewayDev) {
+                controllerIp = gatewayDev.IP;
+            }
+        }
 
-    try {
-        const res = await fetch(`https://ping-api-fqks.onrender.com/ping?dominio=${dominio}&portas=${portas.join(',')}`);
-        const data = await res.json();
+        if (!controllerIp) {
+            showToast("Erro: IP do Mikrotik não encontrado no cadastro.");
+            return;
+        }
 
-        Object.entries(data.results).forEach(([porta, status]) => {
-          const botao = portaBotaoMap[porta];
-          if (!botao) return;
+        showToast(`Consultando UniFi (${controllerIp})...`);
 
-          botao.classList.remove('borda-vermelha-piscando');
-          if (!status) {
-            botao.classList.add('borda-vermelha-piscando');
-          } else {
-            const originalColor = botao.style.backgroundColor;
-            botao.style.transition = "box-shadow 0.3s";
-            botao.style.boxShadow = "0 0 15px #00ff00";
-            setTimeout(() => botao.style.boxShadow = "", 2000);
-          }
-        });
-    } catch (err) {
-        console.error("Erro ping:", err);
-        showToast("Erro na API.");
+        // 2. Prepara lista de IPs
+        const listaIps = devices.filter(d => d.ip).map(d => d.ip);
+        
+        if(listaIps.length === 0) {
+            showToast("Sem IPs de dispositivos para testar.");
+            return;
+        }
+
+        try {
+            const response = await fetch(`${LOCAL_API_URL}/verificar-clientes`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    ips: listaIps,
+                    controllerIp: controllerIp // Envia o IP do Gateway
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                devices.forEach(dev => {
+                    if(dev.ip) {
+                        const isOnline = data.resultados[dev.ip];
+                        applyVisualStatus(dev.element, isOnline);
+                    }
+                });
+                showToast("Status atualizado pelo UniFi!");
+            } else {
+                console.error("Erro na API Local:", data.error);
+                showToast("Erro no servidor: " + data.error);
+            }
+
+        } catch (error) {
+            console.error("Falha ao conectar na API Local:", error);
+            showToast("Falha na conexão com o servidor local.");
+        }
+    } 
+    // --- MODO DOMÍNIO: Usar Ping Externo ---
+    else {
+        showToast("Testando porta externa...");
+        const dominio = condominio.dominio;
+        const portas = devices.map(d => d.porta);
+
+        try {
+            const res = await fetch(`https://ping-api-fqks.onrender.com/ping?dominio=${dominio}&portas=${portas.join(',')}`);
+            const data = await res.json();
+
+            devices.forEach(dev => {
+                const isOnline = data.results[dev.porta];
+                applyVisualStatus(dev.element, isOnline);
+            });
+
+        } catch (err) {
+            console.error("Erro ping externo:", err);
+            showToast("Erro na API Externa.");
+        }
     }
 }
 
-/* ============================================================
-   LÓGICA DOS MODAIS (Links, Dispositivos e Condomínios)
-   ============================================================ */
+// Função Auxiliar de Visual
+function applyVisualStatus(btnElement, isOnline) {
+    btnElement.classList.remove('borda-vermelha-piscando');
+    
+    if (!isOnline) {
+        btnElement.classList.add('borda-vermelha-piscando');
+    } else {
+        const originalTransition = btnElement.style.transition;
+        const originalBoxShadow = btnElement.style.boxShadow;
+        
+        btnElement.style.transition = "box-shadow 0.3s, transform 0.2s";
+        btnElement.style.boxShadow = "0 0 20px #00ff00"; 
+        btnElement.style.transform = "scale(1.05)";
+        
+        setTimeout(() => {
+            btnElement.style.boxShadow = originalBoxShadow;
+            btnElement.style.transform = "";
+            btnElement.style.transition = originalTransition;
+        }, 2000);
+    }
+}
 
-// --- FUNÇÃO AUXILIAR DE CÓPIA ---
+// --- MODAIS E HELPERS (Mantidos iguais) ---
+
 window.copyField = function(elementId) {
     const input = document.getElementById(elementId);
     if(input && input.value) {
         navigator.clipboard.writeText(input.value);
         showToast("Copiado!");
-    } else {
-        showToast("Campo vazio.");
     }
 }
 
-// --- 1. MODAL DE LINKS DE INTERNET (FIXO / 4G) ---
-
-// Início: Chamado pelo botão no Card
 window.openLinkModal = function(condId, index, linkData) {
-    // Se já existe dados (Edição), pulamos a seleção e abrimos direto
     if (linkData) {
-        // Detecta o tipo baseado nos dados (se tiver 'mobileNum', é 4G)
         const type = linkData.type || (linkData.mobileNum ? 'mobile' : 'fixed');
         configureAndOpenMainModal(condId, index, type, linkData);
     } else {
-        // Se é novo, abre a seleção de tipo
         document.getElementById('linkCondoId').value = condId;
         document.getElementById('linkIndex').value = index;
         document.getElementById('linkTypeModal').classList.add('open');
     }
 }
 
-// Fechar Seleção
 window.closeTypeModal = function() {
     document.getElementById('linkTypeModal').classList.remove('open');
 }
 
-// Usuário escolheu o tipo (Fixo ou 4G)
 window.selectLinkType = function(type) {
     const condId = document.getElementById('linkCondoId').value;
     const index = document.getElementById('linkIndex').value;
-    
     closeTypeModal();
-    // Abre o modal principal vazio configurado para o tipo escolhido
     configureAndOpenMainModal(condId, index, type, null);
 }
 
-// Configura e Mostra o Modal Principal
 function configureAndOpenMainModal(condId, index, type, data) {
     const modal = document.getElementById('linkModal');
     const title = document.getElementById('linkModalTitle');
     const btnDelete = document.getElementById('btnDeleteLink');
     
-    // Set Hidden Fields
     document.getElementById('linkCondoId').value = condId;
     document.getElementById('linkIndex').value = index;
     document.getElementById('linkType').value = type;
 
-    // Elementos de UI
     const fieldsFixed = document.getElementById('fields-fixed');
     const fieldsMobile = document.getElementById('fields-mobile');
     const labelProvider = document.getElementById('labelProvider');
 
-    // Resetar campos
     document.getElementById('linkProvider').value = '';
-    // Fixed fields
     document.getElementById('color-blue').checked = true;
     document.getElementById('linkContract').value = '';
     document.getElementById('linkCnpj').value = '';
     document.getElementById('linkPass').value = '';
-    // Mobile fields
     document.getElementById('linkMobileNum').value = '';
     document.getElementById('linkMobileGB').value = '';
 
-    // CONFIGURAÇÃO VISUAL (FIXO vs 4G)
     if (type === 'mobile') {
-        // Modo 4G
         title.innerText = data ? "Editar 4G" : "Novo Modem 4G";
         labelProvider.innerText = "Operadora"; 
         fieldsFixed.classList.add('hidden');
         fieldsMobile.classList.remove('hidden');
     } else {
-        // Modo Internet Fixa
         title.innerText = data ? "Editar Link Fixo" : "Novo Link Fixo";
         labelProvider.innerText = "Operadora";
         fieldsFixed.classList.remove('hidden');
         fieldsMobile.classList.add('hidden');
     }
 
-    // PREENCHER DADOS SE FOR EDIÇÃO
     if (data) {
         document.getElementById('linkProvider').value = data.provider;
-        
         if (type === 'mobile') {
             document.getElementById('linkMobileNum').value = data.mobileNum || '';
             document.getElementById('linkMobileGB').value = data.gb || '';
         } else {
-            // Cor (Seletor)
             const colorRadio = document.querySelector(`input[name="linkColorOption"][value="${data.color}"]`);
             if (colorRadio) colorRadio.checked = true;
-            
             document.getElementById('linkContract').value = data.contract || '';
             document.getElementById('linkCnpj').value = data.cnpj || '';
             document.getElementById('linkPass').value = data.pass || '';
@@ -388,7 +427,6 @@ function configureAndOpenMainModal(condId, index, type, data) {
     } else {
         btnDelete.classList.add('hidden');
     }
-
     modal.classList.add('open');
 }
 
@@ -396,32 +434,23 @@ window.closeLinkModal = function() {
     document.getElementById('linkModal').classList.remove('open');
 }
 
-// Salvar (Lida com os dois tipos)
 const linkForm = document.getElementById('linkForm');
 if(linkForm) {
     linkForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
         const condId = document.getElementById('linkCondoId').value;
         const index = parseInt(document.getElementById('linkIndex').value);
         const type = document.getElementById('linkType').value;
         const providerName = document.getElementById('linkProvider').value;
 
-        let newLink = {
-            type: type,
-            provider: providerName
-        };
+        let newLink = { type: type, provider: providerName };
 
         if (type === 'mobile') {
-            // SALVANDO 4G
-            newLink.color = "#ff9800"; // Laranja Obrigatório
+            newLink.color = "#ff9800"; 
             newLink.mobileNum = document.getElementById('linkMobileNum').value;
             newLink.gb = document.getElementById('linkMobileGB').value;
-            // Limpa campos irrelevantes
         } else {
-            // SALVANDO FIXO
-            const selectedColor = document.querySelector('input[name="linkColorOption"]:checked').value;
-            newLink.color = selectedColor;
+            newLink.color = document.querySelector('input[name="linkColorOption"]:checked').value;
             newLink.contract = document.getElementById('linkContract').value;
             newLink.cnpj = document.getElementById('linkCnpj').value;
             newLink.pass = document.getElementById('linkPass').value;
@@ -430,65 +459,49 @@ if(linkForm) {
         try {
             const condominioIndex = listArr.findIndex(c => c.id === condId);
             if (condominioIndex === -1) return;
-
-            // Pega o array atual ou cria um novo
             let currentLinks = listArr[condominioIndex].links || [null, null];
-            // Garante tamanho 2
             while(currentLinks.length < 2) currentLinks.push(null);
-            
-            // Atualiza o slot específico
             currentLinks[index] = newLink;
-
             await updateFirebase(condId, { links: currentLinks });
             showToast("Link salvo!");
             closeLinkModal();
             loadData();
         } catch (error) {
-            console.error("Erro ao salvar:", error);
+            console.error(error);
             showToast("Erro ao salvar.");
         }
     });
 }
 
-// Excluir Link
 const btnDeleteLink = document.getElementById('btnDeleteLink');
 if(btnDeleteLink) {
     btnDeleteLink.addEventListener('click', async function() {
-        if(!confirm("Tem certeza que deseja remover este link?")) return;
-
+        if(!confirm("Remover link?")) return;
         const condId = document.getElementById('linkCondoId').value;
         const index = parseInt(document.getElementById('linkIndex').value);
-
         try {
             const condominioIndex = listArr.findIndex(c => c.id === condId);
             let currentLinks = listArr[condominioIndex].links || [null, null];
-
-            // Define o slot como null para limpar, mas mantendo a posição
             currentLinks[index] = null;
-
             await updateFirebase(condId, { links: currentLinks });
-            showToast("Link removido!");
+            showToast("Removido!");
             closeLinkModal();
             loadData();
         } catch(error) {
-            console.error("Erro ao excluir link:", error);
-            showToast("Erro ao excluir.");
+            console.error(error);
         }
     });
 }
 
-// --- 2. MODAL DE DISPOSITIVOS (Adicionar/Editar dentro do card) ---
 window.openDeviceModal = function(condId, device = null) {
   const modal = document.getElementById('deviceModal');
   const title = document.getElementById('modalTitle');
   const btnDelete = document.getElementById('btnDelete');
-  
   document.getElementById('condominioId').value = condId;
   document.getElementById('devName').value = '';
   document.getElementById('devIp').value = '';
   document.getElementById('devPort').value = '';
   document.getElementById('oldDeviceName').value = ''; 
-
   if (device) {
     title.innerText = "Editar Dispositivo";
     document.getElementById('devName').value = device.Nome;
@@ -502,270 +515,148 @@ window.openDeviceModal = function(condId, device = null) {
   }
   modal.classList.add('open');
 }
+window.closeDeviceModal = function() { document.getElementById('deviceModal').classList.remove('open'); }
 
-window.closeDeviceModal = function() {
-  document.getElementById('deviceModal').classList.remove('open');
-}
-
-// Salvar Dispositivo
 const deviceForm = document.getElementById('deviceForm');
 if(deviceForm) {
     deviceForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const condId = document.getElementById('condominioId').value;
       const oldName = document.getElementById('oldDeviceName').value;
-      
       const newDevice = {
         Nome: document.getElementById('devName').value,
         IP: document.getElementById('devIp').value,
         Porta: document.getElementById('devPort').value
       };
-
       try {
         const condominioIndex = listArr.findIndex(c => c.id === condId);
         if (condominioIndex === -1) return;
-
         let natArray = listArr[condominioIndex].nat || [];
-
         if (oldName) {
           const devIndex = natArray.findIndex(d => d.Nome === oldName);
           if (devIndex !== -1) natArray[devIndex] = newDevice;
-        } else {
-          natArray.push(newDevice);
-        }
-
+        } else { natArray.push(newDevice); }
         await updateFirebase(condId, { nat: natArray });
-        showToast("Salvo com sucesso!");
+        showToast("Salvo!");
         closeDeviceModal();
         loadData(); 
-      } catch (error) {
-        console.error("Erro salvar dispositivo:", error);
-        alert("Erro ao salvar.");
-      }
+      } catch (error) { console.error(error); }
     });
 }
 
-// Excluir Dispositivo
 const btnDeleteDevice = document.getElementById('btnDelete');
 if(btnDeleteDevice){
     btnDeleteDevice.addEventListener('click', async function() {
         const condId = document.getElementById('condominioId').value;
         const oldName = document.getElementById('oldDeviceName').value;
-
         if (!confirm(`Excluir "${oldName}"?`)) return;
-
         try {
             const condominioIndex = listArr.findIndex(c => c.id === condId);
-            if (condominioIndex === -1) return;
-
             let natArray = listArr[condominioIndex].nat || [];
             const newNatArray = natArray.filter(d => d.Nome !== oldName);
-
             await updateFirebase(condId, { nat: newNatArray });
             showToast("Excluído!");
             closeDeviceModal();
             loadData();
-        } catch(error) {
-            console.error("Erro excluir:", error);
-        }
+        } catch(error) { console.error(error); }
     });
 }
 
-
-// --- 3. MODAL DE CONDOMÍNIOS (Botão "+" do Header) ---
 window.openCondoModal = function() {
     document.getElementById('newCondoName').value = "";
     document.getElementById('newCondoDomain').value = "";
     document.getElementById('condoModal').classList.add('open');
 }
+window.closeCondoModal = function() { document.getElementById('condoModal').classList.remove('open'); }
+document.getElementById('adder')?.addEventListener('click', window.openCondoModal);
 
-window.closeCondoModal = function() {
-    document.getElementById('condoModal').classList.remove('open');
-}
-
-const adderBtn = document.getElementById('adder');
-if(adderBtn) {
-    adderBtn.addEventListener('click', window.openCondoModal);
-}
-
-// Salvar Novo Condomínio
 const condoForm = document.getElementById('condoForm');
 if(condoForm) {
     condoForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
         const nome = document.getElementById('newCondoName').value;
         const dominio = document.getElementById('newCondoDomain').value;
-
-        if(!nome || !dominio) {
-            alert("Preencha todos os campos");
-            return;
-        }
-
+        if(!nome || !dominio) { alert("Preencha todos os campos"); return; }
         try {
-            // --- LÓGICA DE ID SEQUENCIAL (NOVA) ---
             let maxId = 0;
-
-            // Varre a lista atual para achar o maior número
             listArr.forEach(item => {
                 const currentId = parseInt(item.id);
-                // Ignora IDs que não sejam números (ex: o bugado JHe...)
-                if (!isNaN(currentId) && currentId > maxId) {
-                    maxId = currentId;
-                }
+                if (!isNaN(currentId) && currentId > maxId) maxId = currentId;
             });
-
-            // O próximo ID será o maior + 1
             const nextId = (maxId + 1).toString();
-            // ----------------------------------------
-
-            // Usa setDoc para definir o ID manualmente
             await setDoc(doc(db, "condominios", nextId), {
                 nome: nome,
                 dominio: dominio,
                 nat: [],
-                links: [null, null] // Inicializa com slots de link vazios
+                links: [null, null]
             });
-
-            showToast(`Condomínio criado! ID: ${nextId}`);
+            showToast(`Criado ID: ${nextId}`);
             closeCondoModal();
             loadData(); 
-        } catch(err) {
-            console.error("Erro ao criar condomínio:", err);
-            alert("Erro ao criar condomínio.");
-        }
+        } catch(err) { console.error(err); }
     });
 }
 
-/* ============================================================
-   FUNÇÕES DE EXPORTAÇÃO
-   ============================================================ */
-
 function downloadFile(content, filename, mimeType) {
     const a = document.createElement('a');
-    // Adiciona o BOM (\uFEFF) para garantir que o Excel abra UTF-8 corretamente
     const blob = new Blob(mimeType.includes('csv') ? ['\uFEFF' + content] : [content], {type: mimeType});
     const url = URL.createObjectURL(blob);
     a.href = url;
     a.download = filename;
     document.body.appendChild(a);
     a.click();
-    setTimeout(() => {
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-    }, 0);
+    setTimeout(() => { document.body.removeChild(a); window.URL.revokeObjectURL(url); }, 0);
 }
-
-// 1. Exportar Lista de Nomes (.txt)
 document.getElementById('btnExportNames')?.addEventListener('click', () => {
-    if (!listArr || listArr.length === 0) {
-        showToast("Sem dados para exportar.");
-        return;
-    }
-    const names = listArr.map(c => c.nome).join('\n');
-    downloadFile(names, 'lista_condominios_nomes.txt', 'text/plain');
+    if (!listArr.length) return;
+    downloadFile(listArr.map(c => c.nome).join('\n'), 'lista_nomes.txt', 'text/plain');
 });
-
-// 2. Exportar Lista de Domínios (.txt)
 document.getElementById('btnExportDomains')?.addEventListener('click', () => {
-    if (!listArr || listArr.length === 0) {
-        showToast("Sem dados para exportar.");
-        return;
-    }
-    const domains = listArr.map(c => c.dominio).join('\n');
-    downloadFile(domains, 'lista_condominios_dominios.txt', 'text/plain');
+    if (!listArr.length) return;
+    downloadFile(listArr.map(c => c.dominio).join('\n'), 'lista_dominios.txt', 'text/plain');
 });
-
-// 3. Exportar Banco de Dados Completo (.json)
 document.getElementById('btnExportDB')?.addEventListener('click', () => {
-    if (!listArr || listArr.length === 0) {
-        showToast("Sem dados para exportar.");
-        return;
-    }
-    const json = JSON.stringify(listArr, null, 4); 
-    downloadFile(json, 'backup_banco_de_dados.json', 'application/json');
+    if (!listArr.length) return;
+    downloadFile(JSON.stringify(listArr, null, 4), 'backup.json', 'application/json');
 });
-
-// 4. Exportar Tabela CSV (.csv)
 document.getElementById('btnExportCSV')?.addEventListener('click', () => {
-    if (!listArr || listArr.length === 0) {
-        showToast("Sem dados para exportar.");
-        return;
-    }
-
+    if (!listArr.length) return;
     const headers = ["ID", "Condomínio", "Domínio", "Nome Dispositivo", "IP Interno", "Porta Externa", "Link 1", "Link 2"];
     let csvContent = headers.join(",") + "\n";
-
     listArr.forEach(cond => {
-        // Formata string dos links para o CSV
         const l1 = cond.links && cond.links[0] ? `"${cond.links[0].provider}"` : "-";
         const l2 = cond.links && cond.links[1] ? `"${cond.links[1].provider}"` : "-";
-
         if (cond.nat && cond.nat.length > 0) {
             cond.nat.forEach(dev => {
-                let row = [
-                    `"${cond.id}"`,
-                    `"${cond.nome}"`,
-                    `"${cond.dominio}"`,
-                    `"${dev.Nome}"`,
-                    `"${dev.IP}"`,
-                    `"${dev.Porta}"`,
-                    l1,
-                    l2
-                ];
+                let row = [`"${cond.id}"`, `"${cond.nome}"`, `"${cond.dominio}"`, `"${dev.Nome}"`, `"${dev.IP}"`, `"${dev.Porta}"`, l1, l2];
                 csvContent += row.join(",") + "\n";
             });
         } else {
-            let row = [
-                `"${cond.id}"`,
-                `"${cond.nome}"`,
-                `"${cond.dominio}"`,
-                "-",
-                "-",
-                "-",
-                l1,
-                l2
-            ];
+            let row = [`"${cond.id}"`, `"${cond.nome}"`, `"${cond.dominio}"`, "-", "-", "-", l1, l2];
             csvContent += row.join(",") + "\n";
         }
     });
-
-    downloadFile(csvContent, 'relatorio_geral.csv', 'text/csv;charset=utf-8;');
+    downloadFile(csvContent, 'relatorio.csv', 'text/csv;charset=utf-8;');
 });
-
-
-// --- Helpers ---
 
 async function updateFirebase(condId, dataObj) {
     const condRef = doc(db, "condominios", condId);
     await updateDoc(condRef, dataObj);
 }
-
 function showToast(message) {
   const toast = document.getElementById("toast");
   if(toast) {
       toast.innerText = message;
       toast.className = "show";
       setTimeout(() => toast.className = toast.className.replace("show", ""), 3000);
-  } else {
-      console.log(message);
   }
 }
-
-// --- Função de Filtro (Separada para ser reutilizada) ---
 function applyFilter() {
   const input = document.getElementById('search-bar').value.toLowerCase();
   const cards = document.getElementsByClassName('card');
-
   Array.from(cards).forEach((card) => {
-    // Busca no nome do condomínio
     const name = card.getElementsByTagName('p')[0].textContent.toLowerCase();
-    
-    // Busca nos textos dos botões
-    const buttonsText = Array.from(card.getElementsByTagName('button'))
-                             .map(b => b.textContent.toLowerCase())
-                             .join(' ');
-
+    const buttonsText = Array.from(card.getElementsByTagName('button')).map(b => b.textContent.toLowerCase()).join(' ');
     if (name.includes(input) || buttonsText.includes(input)) {
       card.style.display = 'flex'; 
     } else {
@@ -773,16 +664,11 @@ function applyFilter() {
     }
   });
 }
-
-// Evento de Digitação (Chama a função acima)
 document.getElementById('search-bar').addEventListener("input", applyFilter);
-
 document.getElementById('eraser').addEventListener("click", function () {
   const input = document.getElementById('search-bar');
   input.value = "";
   input.dispatchEvent(new Event('input'));
   input.focus();
 });
-
-// Start
 loadData();
