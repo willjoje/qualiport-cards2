@@ -5,6 +5,9 @@
   <title>Qualiport Cards</title>
   <link rel="icon" href="https://qualiport.com.br/imagens-qualiport/144.png" type="image/png" />
   <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -13,9 +16,6 @@
       }
     })();
   </script>
-</head>
-
-<body>
 
   <div id="toast">Copiado!</div>
 
@@ -24,7 +24,13 @@
     <div class="header">
       <button id="theme-toggle" title="Alternar Tema Escuro/Claro">🌗</button>
 
-      <button onclick="logout()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: var(--text-header); cursor: pointer; font-weight: bold;">Sair</button>
+      <div class="top-right-tools">
+        <div class="quick-ping-wrapper">
+            <input type="text" id="quick-ping-input" placeholder="Buscar IP Interno..." />
+            <button id="btn-quick-ping" title="Testar via UniFi/VPN">⚡</button>
+        </div>
+        <button onclick="logout()" class="btn-logout">Sair</button>
+      </div>
 
       <img id="logo" src="https://www.qualiport.com.br/img-qualiport/logo2.png" alt="Logo Qualiport" />
       
@@ -32,9 +38,18 @@
         <button id="adder" class="adder" title="Adicionar Novo Condomínio">+</button>
         
         <input type="text" class="search-bar" id="search-bar" placeholder="Nome do condomínio, IP ou porta..." />
-        
+
         <button id="eraser" class="eraser" title="Limpar busca">X</button>
       </div>
+      <div style="display: flex; gap: 10px; margin: 0 15px;">
+        <button id="btn-global-ip" class="button" style="background-color: #2196F3; margin: 0;">
+            ⚡ Testar Tudo (IP)
+        </button>
+        <button id="btn-global-domain" class="button" style="background-color: #ff9800; margin: 0;">
+            🌐 Testar Tudo (Domínio)
+        </button>
+    </div>
+      
     </div>
 
     <div class="main-content">
@@ -89,17 +104,14 @@
     <div class="modal-box">
       <h2>Novo Condomínio</h2>
       <form id="condoForm">
-        
         <div class="input-group">
           <label>Nome do Condomínio</label>
           <input type="text" id="newCondoName" placeholder="Ex: Edifício Solar" required>
         </div>
-        
         <div class="input-group">
           <label>Domínio / DynDNS</label>
           <input type="text" id="newCondoDomain" placeholder="Ex: cond-solar.dyndns.org" required>
         </div>
-
         <div class="modal-actions">
           <button type="button" class="btn-cancel" onclick="closeCondoModal()">Cancelar</button>
           <button type="submit" class="btn-save">Criar Condomínio</button>
@@ -112,7 +124,6 @@
     <div class="modal-box" style="max-width: 350px; text-align: center;">
       <h2>Adicionar Link</h2>
       <p style="margin-bottom: 20px;">Qual o tipo de conexão?</p>
-      
       <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px;">
           <button onclick="selectLinkType('fixed')" class="type-select-btn" style="background: #2196F3;">
             🌐<br>Internet Fixa
@@ -121,7 +132,6 @@
             📶<br>Modem 4G
           </button>
       </div>
-
       <button type="button" class="btn-cancel" onclick="closeTypeModal()">Cancelar</button>
     </div>
   </div>
@@ -132,7 +142,8 @@
       <form id="linkForm">
         <input type="hidden" id="linkCondoId">
         <input type="hidden" id="linkIndex"> 
-        <input type="hidden" id="linkType"> <div class="input-group">
+        <input type="hidden" id="linkType"> 
+        <div class="input-group">
             <label id="labelProvider">Operadora</label>
             <input type="text" id="linkProvider" placeholder="Ex: Vivo, Claro" required>
         </div>
@@ -143,21 +154,16 @@
                 <div class="color-options-container">
                     <input type="radio" name="linkColorOption" id="color-blue" value="#2196F3" checked>
                     <label for="color-blue" class="color-circle" style="background-color: #2196F3;" title="Azul"></label>
-
                     <input type="radio" name="linkColorOption" id="color-purple" value="#9c27b0">
                     <label for="color-purple" class="color-circle" style="background-color: #9c27b0;" title="Roxo"></label>
-
                     <input type="radio" name="linkColorOption" id="color-red" value="#f44336">
                     <label for="color-red" class="color-circle" style="background-color: #f44336;" title="Vermelho"></label>
-
                     <input type="radio" name="linkColorOption" id="color-gray" value="#607d8b">
                     <label for="color-gray" class="color-circle" style="background-color: #607d8b;" title="Cinza"></label>
-
                     <input type="radio" name="linkColorOption" id="color-pink" value="#e91e63">
                     <label for="color-pink" class="color-circle" style="background-color: #e91e63;" title="Rosa"></label>
                 </div>
             </div>
-            
             <div class="input-group">
               <label>Nº Contrato</label>
               <div class="copy-wrapper">
@@ -165,7 +171,6 @@
                   <button type="button" class="btn-copy" onclick="copyField('linkContract')">📋</button>
               </div>
             </div>
-
             <div class="input-group">
               <label>CNPJ Titular</label>
               <div class="copy-wrapper">
@@ -173,7 +178,6 @@
                   <button type="button" class="btn-copy" onclick="copyField('linkCnpj')">📋</button>
               </div>
             </div>
-
             <div class="input-group">
               <label>Senha de Acesso</label>
               <div class="copy-wrapper">
@@ -191,7 +195,6 @@
                     <button type="button" class="btn-copy" onclick="copyField('linkMobileNum')">📋</button>
                 </div>
              </div>
-
              <div class="input-group">
                 <label>Quantidade de GB</label>
                 <input type="text" id="linkMobileGB" placeholder="Ex: 50GB">
@@ -211,14 +214,12 @@
     import { auth } from './firebase.js';
     import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
-    // Se não houver usuário logado, redireciona para o login
     onAuthStateChanged(auth, (user) => {
         if (!user) {
             window.location.href = "./index.html";
         }
     });
 
-    // Função global de Logout
     window.logout = async function() {
         try {
             await signOut(auth);

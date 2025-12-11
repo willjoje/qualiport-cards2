@@ -2,8 +2,7 @@ import { collection, getDocs, doc, updateDoc, addDoc, setDoc } from "https://www
 import { db } from "./firebase.js";
 
 // --- CONFIGURAÇÃO DA API LOCAL (TÚNEL CLOUDFLARE) ---
-// Link gerado pelo seu túnel:
-const LOCAL_API_URL = "https://charges-practical-deeply-effectively.trycloudflare.com"; 
+const LOCAL_API_URL = "https://ottawa-roll-submitted-necessarily.trycloudflare.com"; 
 
 // --- Variáveis Globais ---
 let listArr = []; 
@@ -14,11 +13,7 @@ const themeToggleBtn = document.getElementById('theme-toggle');
 if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
-        if (document.body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-        } else {
-            localStorage.setItem('theme', 'light');
-        }
+        localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
     });
 }
 
@@ -105,6 +100,7 @@ function createCards(lista) {
 
     const devicesContainer = document.createElement("div");
     devicesContainer.className = "devices-container"; 
+    devicesContainer.id = `devices-${condominio.id}`;
     
     const toggleButton = document.createElement("button");
     toggleButton.innerText = useIpMap[condominio.id] ? "Usar Domínio" : "Usar IP";
@@ -138,12 +134,17 @@ function createCards(lista) {
   });
 }
 
-// --- Renderização de Botões ---
+// --- Renderização de Botões (COM TEXTO DE STATUS EMBAIXO) ---
 function renderDeviceButtons(condominio, card, container) {
   container.innerHTML = "";
   const useIp = useIpMap[condominio.id];
 
   const createWrapper = (label, url, originalDevice, bgColor) => {
+      // 1. Container Vertical
+      const outerContainer = document.createElement("div");
+      outerContainer.className = "device-outer-container";
+
+      // 2. Wrapper dos Botões
       const wrapper = document.createElement("div");
       wrapper.className = "device-wrapper";
 
@@ -174,7 +175,17 @@ function renderDeviceButtons(condominio, card, container) {
 
       wrapper.appendChild(btn);
       wrapper.appendChild(editBtn);
-      return wrapper;
+
+      // 3. Texto de UPTIME/DOWNTIME (Novo)
+      const statusText = document.createElement("span");
+      statusText.className = "device-status-text";
+      statusText.style.display = "none";
+      statusText.innerText = "";
+
+      outerContainer.appendChild(wrapper);
+      outerContainer.appendChild(statusText);
+
+      return outerContainer;
   };
 
   if (condominio.nat) {
@@ -197,7 +208,7 @@ function renderDeviceButtons(condominio, card, container) {
     if (nome.includes("MASQUERADE")) return;
     if (porta.includes("7890")) return;
 
-    const color = useIp ? "#c77dd9" : "#4caf50";
+    const color = useIp ? "#0277bd" : "#4caf50";
     
     let url;
     if (useIp) {
@@ -215,9 +226,11 @@ function renderDeviceButtons(condominio, card, container) {
   });
 }
 
-// --- PING TEST INTELIGENTE (Com busca de IP Mikrotik) ---
+// --- PING TEST INTELIGENTE (UPTIME + DOWNTIME) ---
+// Substitua a função runPingTest inteira por esta:
 async function runPingTest(condominio, devicesContainer) {
     const useIp = useIpMap[condominio.id];
+    // Seleciona os botões dentro do container
     const botoes = devicesContainer.querySelectorAll(".button");
     const devices = [];
 
@@ -225,15 +238,20 @@ async function runPingTest(condominio, devicesContainer) {
         let porta = btn.dataset.porta;
         let ip = btn.dataset.ip;
 
-        // Fallback
+        // Fallback: Se não tem IP no botão, tenta achar no objeto do condomínio
         if (!ip && porta && condominio.nat) {
              const found = condominio.nat.find(d => d.Porta === porta);
              if(found) ip = found.IP;
         }
 
+        // Acha o elemento de texto (span) que está logo abaixo do botão
+        const containerPai = btn.closest('.device-outer-container');
+        const textElement = containerPai ? containerPai.querySelector('.device-status-text') : null;
+
         if (porta) {
             devices.push({
                 element: btn,
+                textElement: textElement,
                 ip: ip,
                 porta: porta
             });
@@ -245,32 +263,22 @@ async function runPingTest(condominio, devicesContainer) {
         return;
     }
 
-    // --- MODO IP: Usar API Local (UniFi) ---
     if (useIp) {
-        // 1. Encontra o IP do Controlador/Mikrotik
+        // --- MODO IP INTERNO (API UNIFI) ---
         let controllerIp = null;
+        // Pega o IP do Mikrotik para saber qual controlador chamar
         if (condominio.nat) {
-            // Procura qualquer dispositivo que tenha "Mikrotik" no nome
             const gatewayDev = condominio.nat.find(d => d.Nome && d.Nome.toUpperCase().includes("MIKROTIK"));
-            if (gatewayDev) {
-                controllerIp = gatewayDev.IP;
-            }
+            if (gatewayDev) controllerIp = gatewayDev.IP;
         }
 
         if (!controllerIp) {
-            showToast("Erro: IP do Mikrotik não encontrado no cadastro.");
+            showToast("Erro: IP do Mikrotik não encontrado.");
             return;
         }
 
         showToast(`Consultando UniFi (${controllerIp})...`);
-
-        // 2. Prepara lista de IPs
         const listaIps = devices.filter(d => d.ip).map(d => d.ip);
-        
-        if(listaIps.length === 0) {
-            showToast("Sem IPs de dispositivos para testar.");
-            return;
-        }
 
         try {
             const response = await fetch(`${LOCAL_API_URL}/verificar-clientes`, {
@@ -278,7 +286,7 @@ async function runPingTest(condominio, devicesContainer) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ 
                     ips: listaIps,
-                    controllerIp: controllerIp // Envia o IP do Gateway
+                    controllerIp: controllerIp 
                 })
             });
 
@@ -287,23 +295,66 @@ async function runPingTest(condominio, devicesContainer) {
             if (data.success) {
                 devices.forEach(dev => {
                     if(dev.ip) {
-                        const isOnline = data.resultados[dev.ip];
+                        const result = data.resultados[dev.ip];
+                        
+                        let isOnline = false;
+                        let uptime = 0;
+                        let lastSeen = null;
+
+                        // Extrai os dados do objeto retornado pelo backend
+                        if (typeof result === 'object' && result !== null) {
+                            isOnline = !!result.online;
+                            uptime = result.uptime || 0;     // Tempo ligado em segundos
+                            lastSeen = result.last_seen;     // Data da última vez visto (timestamp)
+                        } else {
+                            isOnline = !!result;
+                        }
+
+                        // Atualiza a cor do botão (Piscar vermelho ou ficar verde)
                         applyVisualStatus(dev.element, isOnline);
+
+                        // --- AQUI ESTÁ A MÁGICA DOS TEXTOS ---
+                        if (dev.textElement) {
+                            dev.textElement.style.display = "block";
+                            
+                            if (isOnline) {
+                                // ONLINE (Texto Verde)
+                                dev.textElement.classList.remove('status-offline');
+                                dev.textElement.classList.add('status-online');
+                                
+                                if (uptime > 60) { // Só mostra tempo se for maior que 1 minuto
+                                    dev.textElement.innerText = "Up: " + formatDuration(uptime);
+                                } else {
+                                    // Se vier 0 ou muito baixo, mostra só Online para não confundir
+                                    dev.textElement.innerText = "Online";
+                                }
+
+                            } else {
+                                // SE TÁ OFFLINE: Mostra quanto tempo caiu
+                                dev.textElement.className = "device-status-text status-offline"; // Cor Vermelha
+                                
+                                if (lastSeen) {
+                                    const now = Math.floor(Date.now() / 1000);
+                                    const secondsOffline = now - lastSeen;
+                                    dev.textElement.innerText = "Down: " + formatDuration(secondsOffline);
+                                } else {
+                                    // Se last_seen for null, é pq o UniFi já apagou do histórico ou nunca viu
+                                    dev.textElement.innerText = "Down: ∞"; 
+                                }
+                            }
+                        }
                     }
                 });
-                showToast("Status atualizado pelo UniFi!");
+                showToast("Status atualizado!");
             } else {
-                console.error("Erro na API Local:", data.error);
-                showToast("Erro no servidor: " + data.error);
+                showToast("Erro API: " + (data.error || "Desconhecido"));
             }
-
         } catch (error) {
-            console.error("Falha ao conectar na API Local:", error);
-            showToast("Falha na conexão com o servidor local.");
+            console.error(error);
+            showToast("Falha na conexão.");
         }
-    } 
-    // --- MODO DOMÍNIO: Usar Ping Externo ---
-    else {
+    } else {
+        // --- MODO DOMÍNIO EXTERNO (MANTIDO IGUAL) ---
         showToast("Testando porta externa...");
         const dominio = condominio.dominio;
         const portas = devices.map(d => d.porta);
@@ -315,8 +366,9 @@ async function runPingTest(condominio, devicesContainer) {
             devices.forEach(dev => {
                 const isOnline = data.results[dev.porta];
                 applyVisualStatus(dev.element, isOnline);
+                // No modo externo não temos uptime, então esconde o texto
+                if(dev.textElement) dev.textElement.style.display = "none";
             });
-
         } catch (err) {
             console.error("Erro ping externo:", err);
             showToast("Erro na API Externa.");
@@ -324,7 +376,16 @@ async function runPingTest(condominio, devicesContainer) {
     }
 }
 
-// Função Auxiliar de Visual
+// --- FUNÇÃO FORMATAÇÃO (Segundos -> Dias/Horas) ---
+function formatDuration(seconds) {
+    if (!seconds || seconds < 0) return "0m";
+
+    if (seconds < 60) return "agora";
+    if (seconds < 3600) return `${Math.floor(seconds / 60)}m`;
+    if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ${Math.floor((seconds % 3600) / 60)}m`;
+    return `${Math.floor(seconds / 86400)}d ${Math.floor((seconds % 86400) / 3600)}h`;
+}
+
 function applyVisualStatus(btnElement, isOnline) {
     btnElement.classList.remove('borda-vermelha-piscando');
     
@@ -346,8 +407,158 @@ function applyVisualStatus(btnElement, isOnline) {
     }
 }
 
-// --- MODAIS E HELPERS (Mantidos iguais) ---
+// --- PING RÁPIDO (Search & Ping Interno) ---
+const btnQuickPing = document.getElementById('btn-quick-ping');
+const inputQuickPing = document.getElementById('quick-ping-input');
 
+if (btnQuickPing && inputQuickPing) {
+    inputQuickPing.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') btnQuickPing.click();
+    });
+
+    btnQuickPing.addEventListener('click', async () => {
+        let targetIp = inputQuickPing.value.trim();
+        if (targetIp.includes(":")) {
+            targetIp = targetIp.split(":")[0];
+        }
+        
+        if (!targetIp) {
+            showToast("⚠️ Digite um IP interno.");
+            return;
+        }
+
+        let foundCondo = null;
+        let foundDeviceName = "Dispositivo";
+
+        for (const condo of listArr) {
+            if (condo.nat) {
+                const dev = condo.nat.find(d => d.IP === targetIp);
+                if (dev) {
+                    foundCondo = condo;
+                    foundDeviceName = dev.Nome;
+                    break;
+                }
+            }
+        }
+
+        if (!foundCondo) {
+            showToast("❌ IP não encontrado nos cadastros.");
+            return;
+        }
+
+        let controllerIp = null;
+        const gatewayDev = foundCondo.nat.find(d => d.Nome && d.Nome.toUpperCase().includes("MIKROTIK"));
+        if (gatewayDev) controllerIp = gatewayDev.IP;
+
+        if (!controllerIp) {
+            showToast(`⚠️ ${foundCondo.nome} sem Gateway definido.`);
+            return;
+        }
+
+        const originalText = btnQuickPing.innerText;
+        btnQuickPing.innerText = "⏳";
+        btnQuickPing.disabled = true;
+        showToast(`Testando ${foundDeviceName}...`);
+
+        try {
+            const response = await fetch(`${LOCAL_API_URL}/verificar-clientes`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    ips: [targetIp], 
+                    controllerIp: controllerIp 
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                const result = data.resultados[targetIp];
+                let isOnline = false;
+                if (typeof result === 'object' && result !== null) {
+                    isOnline = !!result.online;
+                } else {
+                    isOnline = !!result;
+                }
+                
+                if (isOnline) {
+                    showToast(`✅ ${foundDeviceName} está ONLINE!`);
+                    inputQuickPing.style.color = "#4caf50";
+                } else {
+                    showToast(`🔻 ${foundDeviceName} está OFFLINE.`);
+                    inputQuickPing.style.color = "#f44336";
+                }
+                setTimeout(() => { inputQuickPing.style.color = ""; }, 3000);
+
+            } else {
+                showToast("Erro API: " + (data.error || "Desconhecido"));
+            }
+
+        } catch (error) {
+            console.error("Erro Ping Rápido:", error);
+            showToast("Falha na conexão local.");
+        } finally {
+            btnQuickPing.innerText = originalText;
+            btnQuickPing.disabled = false;
+        }
+    });
+}
+
+
+// --- LÓGICA DO BOTÃO DE TESTE GLOBAL ---
+const btnGlobal = document.getElementById('btn-global-test');
+
+// 1. TESTAR TUDO POR IP
+const btnGlobalIp = document.getElementById('btn-global-ip');
+if (btnGlobalIp) {
+    btnGlobalIp.addEventListener('click', async function() {
+        if(!confirm("Iniciar teste em massa via IP INTERNO (VPN)?")) return;
+        showToast("Iniciando varredura por IP... 🚀");
+        await runGlobalTest(true); 
+    });
+}
+
+// 2. TESTAR TUDO POR DOMÍNIO
+const btnGlobalDomain = document.getElementById('btn-global-domain');
+if (btnGlobalDomain) {
+    btnGlobalDomain.addEventListener('click', async function() {
+        if(!confirm("Iniciar teste em massa via DOMÍNIO EXTERNO?")) return;
+        showToast("Iniciando varredura por Domínio... 🌐");
+        await runGlobalTest(false);
+    });
+}
+
+async function runGlobalTest(forceIpMode) {
+    let testados = 0;
+    for (const condominio of listArr) {
+        const containerNaTela = document.getElementById(`devices-${condominio.id}`);
+        if (containerNaTela) {
+            const cardPai = containerNaTela.closest('.card');
+            if (cardPai && cardPai.style.display === 'none') continue; 
+
+            testados++;
+            useIpMap[condominio.id] = forceIpMode;
+            
+            const toggleBtn = cardPai.querySelector('.toggleButton');
+            if(toggleBtn) {
+                toggleBtn.innerText = forceIpMode ? "Usar Domínio" : "Usar IP";
+                renderDeviceButtons(condominio, cardPai, containerNaTela);
+            }
+
+            try {
+                showToast(`Testando: ${condominio.nome}...`);
+                await runPingTest(condominio, containerNaTela);
+                await new Promise(r => setTimeout(r, 500)); 
+            } catch (err) {
+                console.error(`Erro ao testar ${condominio.nome}`, err);
+            }
+        }
+    }
+    if (testados === 0) showToast("⚠️ Nenhum condomínio visível.");
+    else showToast(`✅ Finalizado! ${testados} testados.`);
+}
+
+// --- MODAIS E HELPERS (Mantidos) ---
 window.copyField = function(elementId) {
     const input = document.getElementById(elementId);
     if(input && input.value) {
@@ -355,7 +566,6 @@ window.copyField = function(elementId) {
         showToast("Copiado!");
     }
 }
-
 window.openLinkModal = function(condId, index, linkData) {
     if (linkData) {
         const type = linkData.type || (linkData.mobileNum ? 'mobile' : 'fixed');
@@ -366,18 +576,13 @@ window.openLinkModal = function(condId, index, linkData) {
         document.getElementById('linkTypeModal').classList.add('open');
     }
 }
-
-window.closeTypeModal = function() {
-    document.getElementById('linkTypeModal').classList.remove('open');
-}
-
+window.closeTypeModal = function() { document.getElementById('linkTypeModal').classList.remove('open'); }
 window.selectLinkType = function(type) {
     const condId = document.getElementById('linkCondoId').value;
     const index = document.getElementById('linkIndex').value;
     closeTypeModal();
     configureAndOpenMainModal(condId, index, type, null);
 }
-
 function configureAndOpenMainModal(condId, index, type, data) {
     const modal = document.getElementById('linkModal');
     const title = document.getElementById('linkModalTitle');
@@ -429,10 +634,7 @@ function configureAndOpenMainModal(condId, index, type, data) {
     }
     modal.classList.add('open');
 }
-
-window.closeLinkModal = function() {
-    document.getElementById('linkModal').classList.remove('open');
-}
+window.closeLinkModal = function() { document.getElementById('linkModal').classList.remove('open'); }
 
 const linkForm = document.getElementById('linkForm');
 if(linkForm) {
@@ -466,10 +668,7 @@ if(linkForm) {
             showToast("Link salvo!");
             closeLinkModal();
             loadData();
-        } catch (error) {
-            console.error(error);
-            showToast("Erro ao salvar.");
-        }
+        } catch (error) { console.error(error); showToast("Erro ao salvar."); }
     });
 }
 
@@ -487,9 +686,7 @@ if(btnDeleteLink) {
             showToast("Removido!");
             closeLinkModal();
             loadData();
-        } catch(error) {
-            console.error(error);
-        }
+        } catch(error) { console.error(error); }
     });
 }
 
@@ -671,4 +868,5 @@ document.getElementById('eraser').addEventListener("click", function () {
   input.dispatchEvent(new Event('input'));
   input.focus();
 });
+
 loadData();

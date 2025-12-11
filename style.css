@@ -1,92 +1,57 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-/* --- EFEITOS DOURADOS (REUTILIZÁVEIS) --- */
 
-/* 1. Use esta classe para BOTÕES, CARDS ou FUNDOS */
+/* --- EFEITOS DOURADOS (REUTILIZÁVEIS) --- */
 .gold-bg {
-  /* O gradiente metálico brilhante */
-  background: linear-gradient(
-    135deg, 
-    #bf953f 0%, 
-    #fcf6ba 45%, 
-    #b38728 50%, 
-    #fbf5b7 80%, 
-    #aa771c 100%
-  ) !important;
-  
-  /* Ajustes visuais obrigatórios para o dourado funcionar */
-  color: #3e2704 !important; /* Marrom escuro para leitura */
+  background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 45%, #b38728 50%, #fbf5b7 80%, #aa771c 100%) !important;
+  color: #3e2704 !important;
   border: 1px solid #b38728 !important;
   text-shadow: none !important;
   box-shadow: 0 4px 10px rgba(179, 135, 40, 0.3);
   font-weight: bold;
   transition: all 0.3s ease;
 }
-
-/* Efeito ao passar o mouse no fundo dourado */
 .gold-bg:hover {
-  filter: brightness(1.15) contrast(1.1); /* Aumenta o brilho */
-  box-shadow: 0 0 15px rgba(252, 246, 186, 0.6); /* Brilho externo */
+  filter: brightness(1.15) contrast(1.1);
+  box-shadow: 0 0 15px rgba(252, 246, 186, 0.6);
   transform: translateY(-2px);
 }
-
-/* 2. Use esta classe para TÍTULOS, ÍCONES ou TEXTOS */
 .gold-text {
-  background: linear-gradient(
-    to right, 
-    #bf953f, 
-    #fcf6ba, 
-    #b38728, 
-    #fbf5b7, 
-    #aa771c
-  );
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
-  font-weight: 800; /* Dourado em texto fino não aparece bem */
-  display: inline-block; /* Necessário para alguns navegadores renderizarem o gradiente */
+  font-weight: 800;
+  display: inline-block;
 }
 
-/* --- DEFINIÇÃO DE CORES (TEMA CLARO E ESCURO) --- */
+/* --- CORES --- */
 :root {
-  /* Tema Claro (Padrão) */
   --bg-body: #f4f6f8;
   --text-main: #333333;
   --text-header: #163149;
-  
   --card-bg: radial-gradient(#ffffff, #e9e9e9e2);
   --card-shadow: none;
-  
   --modal-bg: #ffffff;
   --input-bg: #b2d1b3;
   --input-text: #10490e;
   --input-placeholder: #10490e;
-  
   --btn-text: white;
-  
-  /* Cores específicas de elementos que mantêm identidade */
   --eraser-bg: #ffcccc;
   --adder-bg: #8595be;
-  
   --export-bg: #e0e0e0;
 }
 
 body.dark-mode {
-  /* Tema Escuro (Suave/Dark Grey) */
   --bg-body: #1c2b1f;
   --text-main: #e0e0e0;
   --text-header: #ffffff;
-  
-  /* Cards mais claros que o fundo, mas escuros */
   --card-bg: rgba(255, 255, 255, 0.092); 
-  
   --modal-bg: #1e1e1e;
   --input-bg: #ffffff1f;
   --input-text: #ffffff;
   --input-placeholder: #bbbbbb;
-  
   --eraser-bg: #8c2f2f;
   --adder-bg: #3b4d6e;
-  
   --export-bg: #2a3b2d;
 }
 
@@ -101,47 +66,23 @@ body {
     margin: 0;
 }
 
-h1, h2, h3, label {
-    color: var(--text-main);
-}
+h1, h2, h3, label { color: var(--text-main); }
 
-/* Botão de alternância entre IP/Domínio */
-.toggleButton {
+/* Botões */
+.toggleButton, .testButton {
 	margin: 5px;
 	padding: 8px 16px;
-	background-color: #0077cc;
 	color: white;
 	border: none;
 	border-radius: 0.5rem;
 	font-size: 14px;
 	cursor: pointer;
-	box-shadow: 0 4px 6px rgba(0, 119, 204, 0.2),
-		0 5px 15px rgba(0, 119, 204, 0.2);
 }
+.toggleButton { background-color: #0077cc; box-shadow: 0 4px 6px rgba(0, 119, 204, 0.2); }
+.toggleButton:hover { background-color: #005fa3; }
+.testButton { background-color: #ffaa00; box-shadow: 0 4px 6px rgba(255, 170, 0, 0.2); }
+.testButton:hover { background-color: #cc8800; }
 
-.toggleButton:hover {
-	background-color: #005fa3;
-}
-
-/* Botão de teste */
-.testButton {
-	margin: 5px;
-	padding: 8px 16px;
-	background-color: #ffaa00;
-	color: white;
-	border: none;
-	border-radius: 0.5rem;
-	font-size: 14px;
-	cursor: pointer;
-	box-shadow: 0 4px 6px rgba(255, 170, 0, 0.2),
-		0 5px 15px rgba(255, 170, 0, 0.2);
-}
-
-.testButton:hover {
-	background-color: #cc8800;
-}
-
-/* Layout de botões no card */
 .card {
 	padding: 15px;
 	display: flex;
@@ -149,30 +90,15 @@ h1, h2, h3, label {
 	align-items: center;
 }
 
-/* Responsividade básica */
 @media screen and (max-width: 768px) {
-	.card {
-		width: 80vw;
-	}
-    .header {
-        width: 100%;
-        align-items: center;
-    }
-    .search-bar {
-        width: 60vw !important;
-    }
-    .export-buttons-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .export-btn {
-        width: 100%;
-    }
+	.card { width: 80vw; }
+    .header { width: 100%; align-items: center; }
+    .search-bar { width: 60vw !important; }
+    .export-buttons-container { flex-direction: column; align-items: center; }
+    .export-btn { width: 100%; }
 }
 
-h1 {
-	text-align: center;
-}
+h1 { text-align: center; }
 
 .main-content-wrapper{
 	width: 100%;
@@ -195,21 +121,14 @@ h1 {
 .card {
 	height: auto;
 	width: 20vw; 
-	display: block;
-	text-align: center;
-	font-weight: 600;
-	background: var(--card-bg); /* Uso da variável */
+	background: var(--card-bg);
 	border-radius: 1.5rem;
 	margin: 10px;
 	box-shadow: 0 4px 6px var(--card-shadow), 0 5px 15px var(--card-shadow);
     color: var(--text-main);
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
-
-/* Efeito hover suave no card - Opcional no dark mode */
-.card:hover {
-    transform: translateY(-2px);
-}
+.card:hover { transform: translateY(-2px); }
 
 .button {
 	width: auto;
@@ -223,19 +142,14 @@ h1 {
 	border: none;
 	cursor: pointer;
 	border-radius: 0.7rem;
-	box-shadow: 0 4px 6px rgba(25, 244, 9, 0.1),
-		0 5px 15px rgba(76, 155, 93, 0.807);
+	box-shadow: 0 4px 6px rgba(25, 244, 9, 0.1), 0 5px 15px rgba(76, 155, 93, 0.807);
 }
-
 .button:hover {
-	filter: brightness(1.15) contrast(1.1); /* Aumenta o brilho */
-	box-shadow: 0 0 15px rgba(252, 246, 186, 0.6); /* Brilho externo */
+	filter: brightness(1.15) contrast(1.1);
+	box-shadow: 0 0 15px rgba(252, 246, 186, 0.6);
 	transform: translateY(-2px);
 }
-
-.button:active {
-	transform: translateY(3px);
-}
+.button:active { transform: translateY(3px); }
 
 .header {
 	display: flex;
@@ -259,16 +173,12 @@ h1 {
 	border: none;
 	outline: none;
 }
-.search-bar::placeholder {
-    color: var(--input-placeholder);
-    opacity: 0.7;
-}
+.search-bar::placeholder { color: var(--input-placeholder); opacity: 0.7; }
 
-.eraser {
+.eraser, .adder {
 	width: 3rem;
 	height: 3rem;
 	border-radius: 50%;
-	background-color: var(--eraser-bg);
 	border: none;
 	display: flex;
 	justify-content: center;
@@ -276,33 +186,10 @@ h1 {
 	color: white;
 	font-size: 24px;
 	font-weight: bold;
-	margin-left: 5px;
 }
-
-.eraser:hover {
-	filter: brightness(0.9);
-	cursor: pointer;
-}
-
-.adder {
-	width: 3rem;
-	height: 3rem;
-	border-radius: 50%;
-	background-color: var(--adder-bg);
-	border: none;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: white;
-	font-size: 24px;
-	font-weight: bold;
-	margin-right: 5px;
-}
-
-.adder:hover {
-	filter: brightness(0.9);
-	cursor: pointer;
-}
+.eraser { background-color: var(--eraser-bg); margin-left: 5px; }
+.adder { background-color: var(--adder-bg); margin-right: 5px; }
+.eraser:hover, .adder:hover { filter: brightness(0.9); cursor: pointer; }
 
 #search-block {
 	display: flex;
@@ -312,28 +199,16 @@ h1 {
 }
 
 #logo {
-    /* No dark mode, se o logo for preto transparente, precisaremos inverter. 
-       Se o logo for branco (como parece pelo nome do arquivo), ok.
-       O CSS original tinha filter: invert(100%) - Vamos ajustar isso dinamicamente */
 	width: 250px;
 	display: flex;
 	align-self: center;
 	padding-bottom: 30px;
 	padding-top: 30px;
-    /* Removemos o invert fixo e tratamos via JS ou CSS específico se necessário,
-       mas como o arquivo é 'qualiport-branco.png', ele deve aparecer bem no dark mode.
-       No light mode, talvez precise de fundo ou sombra. 
-       Vou assumir que no Light mode precisamos inverter para ficar preto e no Dark mode deixar normal.
-    */
-    filter: invert(100%); /* Padrão (Light Mode) - Inverte branco para preto */
+    filter: invert(100%);
     transition: filter 0.3s;
 }
+body.dark-mode #logo { filter: invert(0%); }
 
-body.dark-mode #logo {
-    filter: invert(0%); /* Dark Mode - Deixa o logo branco original */
-}
-
-/* Botão de Tema (Dark Mode Toggle) */
 #theme-toggle {
     position: absolute;
     top: 10px;
@@ -345,20 +220,17 @@ body.dark-mode #logo {
     color: var(--text-header);
     transition: transform 0.3s;
 }
-#theme-toggle:hover {
-    transform: rotate(20deg) scale(1.1);
-}
+#theme-toggle:hover { transform: rotate(20deg) scale(1.1); }
 
 .modal-box {
 	background: var(--modal-bg);
     color: var(--text-main);
 	border-radius: 1.5rem;
 	box-shadow: 0 10px 25px var(--card-shadow);
-  padding: 30px;  /* Cria o espaço interno */
-  box-sizing: border-box; 
-  width: 30%;
+    padding: 30px; 
+    box-sizing: border-box; 
+    width: 30%;
 }
-/* Inputs dentro do Modal */
 .modal-box input {
     background-color: var(--bg-body);
     color: var(--text-main);
@@ -368,9 +240,7 @@ body.dark-mode #logo {
     width: 100%;
     box-sizing: border-box;
 }
-body.dark-mode .modal-box input {
-    border: 1px solid #444;
-}
+body.dark-mode .modal-box input { border: 1px solid #444; }
 
 #toast {
 	visibility: hidden;
@@ -389,26 +259,26 @@ body.dark-mode .modal-box input {
 	opacity: 0;
 	transition: opacity 0.5s, bottom 0.5s;
 }
+#toast.show { visibility: visible; opacity: 1; bottom: 50px; }
   
-#toast.show {
-	visibility: visible;
-	opacity: 1;
-	bottom: 50px;
-}
-  
+/* --- VERSÃO OTIMIZADA (LEVE) --- */
 @keyframes piscarBorda {
-  0% { box-shadow: 0 0 0px red; }
-  50% { box-shadow: 0 0 15px red; }
-  100% { box-shadow: 0 0 0px red; }
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
 }
 
 .borda-vermelha-piscando {
-  animation: piscarBorda 1s infinite;
-  background-color: red !important;
+  /* Removemos a sombra pesada */
+  background-color: #d32f2f !important; /* Vermelho sólido */
   color: white;
+  /* Usamos outline ou border simples em vez de shadow */
+  border: 2px solid #ff8a80 !important; 
+  /* A animação agora só mexe na opacidade (GPU friendly) */
+  animation: piscarBorda 1.5s infinite ease-in-out;
+  /* Dica para o navegador usar a placa de vídeo */
+  will-change: opacity; 
 }
-
-/* --- Estilos para Botões de Ação no Card --- */
 .devices-container {
   display: flex;
   flex-wrap: wrap;
@@ -417,13 +287,49 @@ body.dark-mode .modal-box input {
   width: 100%;
 }
 
+/* --- Status Text (Abaixo do Botão) --- */
+.device-outer-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+    vertical-align: top;
+}
+
+.device-status-text {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+    min-height: 14px;
+    line-height: 1.2;
+    white-space: nowrap; 
+}
+
+/* UPTIME: Verde Forte */
+.status-online {
+    color: #2e7d32; 
+}
+body.dark-mode .status-online {
+    color: #66bb6a;
+}
+
+/* DOWNTIME: Vermelho Forte */
+.status-offline {
+    color: #c62828; 
+}
+body.dark-mode .status-offline {
+    color: #ef5350;
+}
+
+/* Ajuste do wrapper original */
 .device-wrapper {
-  display: inline-flex; 
-  align-items: stretch; 
-  width: auto; 
-  margin: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 0.7rem;
+    margin: 0; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.7rem;
+    display: inline-flex; 
+    align-items: stretch;
+    width: auto;
 }
 
 .device-wrapper .button {
@@ -449,10 +355,7 @@ body.dark-mode .modal-box input {
   justify-content: center;
   transition: background 0.3s;
 }
-
-.edit-btn:hover {
-  background-color: #1B5E20; 
-}
+.edit-btn:hover { background-color: #1B5E20; }
 
 .add-device-btn {
   width: 40px;
@@ -469,13 +372,9 @@ body.dark-mode .modal-box input {
   transition: transform 0.2s;
   align-self: center; 
 }
+.add-device-btn:hover { background-color: #1976D2; transform: scale(1.1); }
 
-.add-device-btn:hover {
-  background-color: #1976D2;
-  transform: scale(1.1);
-}
-
-/* --- Estilos do Modal --- */
+/* MODAL OVERLAY */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -486,10 +385,7 @@ body.dark-mode .modal-box input {
   justify-content: center;
   align-items: center;
 }
-
-.modal-overlay.open {
-  display: flex;
-}
+.modal-overlay.open { display: flex; }
 
 .modal-actions {
   display: flex;
@@ -498,55 +394,16 @@ body.dark-mode .modal-box input {
   margin-top: 20px;
   gap: 10px;
 }
+.btn-cancel { background: #9e9e9e; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+.btn-save { background: #2E7D32; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; flex-grow: 1; }
+.btn-delete { background: #d32f2f; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+.btn-delete:hover { background: #b71c1c; }
+.hidden { display: none !important; }
 
-.btn-cancel {
-  background: #9e9e9e;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
+.input-group { margin-bottom: 15px; width: 100%; }
+.input-group label { display: block; margin-bottom: 5px; font-weight: bold; text-align: left; }
 
-.btn-save {
-  background: #2E7D32;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  flex-grow: 1; 
-}
-
-.btn-delete {
-  background: #d32f2f; 
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn-delete:hover {
-  background: #b71c1c;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.input-group {
-    margin-bottom: 15px;
-    width: 100%;
-}
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    text-align: left;
-}
-
-/* --- Área de Exportação --- */
+/* EXPORT */
 .export-section {
     display: flex;
     flex-direction: column;
@@ -560,80 +417,27 @@ body.dark-mode .modal-box input {
     border-radius: 1rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-
-.export-section h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    opacity: 0.8;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
-
-.export-buttons-container {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
+.export-section h3 { margin-top: 0; margin-bottom: 15px; opacity: 0.8; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+.export-buttons-container { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
 .export-btn {
     padding: 12px 24px;
     border: none;
     border-radius: 0.5rem;
     font-size: 14px;
-    font-family: "Roboto", sans-serif;
     font-weight: bold;
     cursor: pointer;
-    background-color: #607d8b; /* Blue Grey - cor neutra e profissional */
+    background-color: #607d8b;
     color: white;
     box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    transition: transform 0.2s, background-color 0.2s;
+    display: flex; align-items: center; gap: 8px;
 }
+.export-btn:hover { background-color: #455a64; transform: translateY(-2px); }
 
-.export-btn:hover {
-    background-color: #455a64;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-
-.export-btn:active {
-    transform: translateY(1px);
-}
-
-/* --- Estilos para os Botões de Link no Cabeçalho do Card --- */
-
-/* Novo layout do cabeçalho do card */
-.card-header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 10px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.card-title {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin: 0;
-  text-align: left;
-  flex-grow: 1;
-  padding-left: 10px;
-}
-
-/* Container dos dois botões de link */
-.links-badges-container {
-  display: flex;
-  gap: 5px;
-  margin-right: 10px;
-}
-
-/* O botão do link em si (Badge) */
+/* CARD HEADER LINKS */
+.card-header-row { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.card-title { font-weight: bold; font-size: 1.1rem; margin: 0; text-align: left; flex-grow: 1; padding-left: 10px; }
+.links-badges-container { display: flex; gap: 5px; margin-right: 10px; }
 .link-badge {
   font-size: 11px;
   font-weight: bold;
@@ -645,40 +449,15 @@ body.dark-mode .modal-box input {
   text-transform: uppercase;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   transition: transform 0.2s, filter 0.2s;
-  min-width: 30px; /* Garante tamanho para o botão "+" */
-  text-align: center;
+  min-width: 30px; text-align: center;
 }
+.link-badge:hover { transform: scale(1.1); filter: brightness(1.1); }
+.link-badge.empty { background-color: #ccc; color: #555; box-shadow: none; border: 1px dashed #999; }
+body.dark-mode .link-badge.empty { background-color: #333; color: #aaa; border: 1px dashed #555; }
 
-.link-badge:hover {
-  transform: scale(1.1);
-  filter: brightness(1.1);
-}
-
-/* Estilo para botão vazio (Adicionar) */
-.link-badge.empty {
-  background-color: #ccc;
-  color: #555;
-  box-shadow: none;
-  border: 1px dashed #999;
-}
-body.dark-mode .link-badge.empty {
-  background-color: #333;
-  color: #aaa;
-  border: 1px dashed #555;
-}
-
-/* --- Estilos para Inputs com Botão Copiar (Dentro do Modal) --- */
-.copy-wrapper {
-  display: flex;
-  gap: 5px;
-}
-
-.copy-wrapper input {
-  flex-grow: 1;
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-}
-
+/* MODAL COPY */
+.copy-wrapper { display: flex; gap: 5px; }
+.copy-wrapper input { flex-grow: 1; border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; }
 .btn-copy {
   background-color: #607d8b;
   color: white;
@@ -688,74 +467,89 @@ body.dark-mode .link-badge.empty {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   font-size: 16px;
-  transition: background 0.2s;
 }
+.btn-copy:hover { background-color: #455a64; }
 
-.btn-copy:hover {
-  background-color: #455a64;
-}
-
-/* Ajuste no modal box para inputs de cor */
-input[type="color"] {
-  border: none;
-  background: none;
-}
-
-/* --- Seletor de Cores (Bolinhas) --- */
-.color-options-container {
-    display: flex;
-    gap: 15px;
-    margin-top: 5px;
-    align-items: center;
-}
-
-/* Esconde a bolinha padrão do rádio */
-input[name="linkColorOption"] {
-    display: none;
-}
-
-/* Estilo das bolinhas de cor */
+input[type="color"] { border: none; background: none; }
+.color-options-container { display: flex; gap: 15px; margin-top: 5px; align-items: center; }
+input[name="linkColorOption"] { display: none; }
 .color-circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 2px solid transparent;
-    display: inline-block;
+    width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s; border: 2px solid transparent; display: inline-block;
 }
+.color-circle:hover { transform: scale(1.1); }
+input[name="linkColorOption"]:checked + .color-circle { transform: scale(1.2); box-shadow: 0 0 0 3px white, 0 0 0 5px #333; }
+body.dark-mode input[name="linkColorOption"]:checked + .color-circle { box-shadow: 0 0 0 3px #1e1e1e, 0 0 0 5px #fff; }
 
-.color-circle:hover {
-    transform: scale(1.1);
-}
-
-/* Estado Selecionado (Radio Checked) */
-input[name="linkColorOption"]:checked + .color-circle {
-    transform: scale(1.2);
-    box-shadow: 0 0 0 3px white, 0 0 0 5px #333; /* Anel duplo para destaque */
-}
-
-/* Ajuste do anel de seleção no Dark Mode */
-body.dark-mode input[name="linkColorOption"]:checked + .color-circle {
-    box-shadow: 0 0 0 3px #1e1e1e, 0 0 0 5px #fff;
-}
-
-/* Botões de Seleção de Tipo (Fixo ou 4G) */
 .type-select-btn {
+    border: none; color: white; padding: 15px 20px; border-radius: 10px;
+    font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.2s;
+    width: 120px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); line-height: 1.4;
+}
+.type-select-btn:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+/* --- FERRAMENTAS DO CANTO SUPERIOR DIREITO --- */
+.top-right-tools {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 100;
+}
+.btn-logout {
+    background: none;
+    border: none;
+    color: var(--text-header);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.btn-logout:hover { border-color: #d32f2f; color: #d32f2f; }
+
+.quick-ping-wrapper {
+    display: flex;
+    align-items: center;
+    background: var(--input-bg);
+    border-radius: 20px;
+    padding: 2px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+#quick-ping-input {
+    background: transparent;
+    border: none;
+    color: var(--input-text);
+    padding: 5px 10px;
+    width: 140px;
+    font-size: 13px;
+    outline: none;
+    font-weight: 500;
+}
+#quick-ping-input::placeholder { color: var(--input-placeholder); opacity: 0.6; font-size: 11px; }
+
+#btn-quick-ping {
+    background: #2196F3;
     border: none;
     color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
     cursor: pointer;
-    transition: transform 0.2s, filter 0.2s;
-    width: 120px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2px;
+    transition: transform 0.2s;
 }
+#btn-quick-ping:hover { transform: scale(1.1); background: #1976D2; }
 
-.type-select-btn:hover {
-    transform: scale(1.05);
-    filter: brightness(1.1);
+@media screen and (max-width: 600px) {
+    .top-right-tools { position: relative; top: 0; right: 0; justify-content: center; margin-bottom: 15px; width: 100%; }
+    #quick-ping-input { width: 180px; }
 }
